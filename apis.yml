@@ -1,0 +1,72 @@
+name: Salesforce Knowledge Management API
+description: API for managing knowledge articles, categories, and data in Salesforce Knowledge
+image: https://www.salesforce.com/content/dam/web/en_us/www/images/sf-logo.svg
+url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+tags:
+- Knowledge Management
+- CRM
+- Documentation
+- Articles
+- Support
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+apis:
+- name: Salesforce Knowledge REST API
+  description: REST API for accessing and managing knowledge articles and their metadata
+  image: https://www.salesforce.com/content/dam/web/en_us/www/images/sf-logo.svg
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0/support
+  tags:
+  - REST
+  - Knowledge
+  - Articles
+  properties:
+  - type: Documentation
+    url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development.htm
+  - type: OpenAPI
+    url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/sforce_api_rest_knowledge.htm
+  - type: Authentication
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
+  contact:
+  - type: Support
+    url: https://help.salesforce.com/
+  - type: Community
+    url: https://trailblazers.salesforce.com/
+- name: Salesforce Knowledge SOAP API
+  description: SOAP API for managing knowledge articles with enterprise integration
+  image: https://www.salesforce.com/content/dam/web/en_us/www/images/sf-logo.svg
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+  baseURL: https://yourInstance.salesforce.com/services/Soap/c/59.0
+  tags:
+  - SOAP
+  - Knowledge
+  - Enterprise
+  properties:
+  - type: Documentation
+    url: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_calls_knowledge.htm
+  - type: WSDL
+    url: https://yourInstance.salesforce.com/services/wsdl/class/KnowledgeArticleVersion
+  - type: Authentication
+    url: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_quickstart_intro.htm
+common:
+- type: Getting Started
+  url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development_intro.htm
+- type: Authentication
+  url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+- type: Rate Limits
+  url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm
+- type: SDKs
+  url: https://developer.salesforce.com/tools/sdks
+- type: Status
+  url: https://status.salesforce.com/
+- type: Terms of Service
+  url: https://www.salesforce.com/company/legal/agreements/
+- type: Privacy Policy
+  url: https://www.salesforce.com/company/privacy/
+- type: Trailhead Learning
+  url: https://trailhead.salesforce.com/en/content/learn/modules/knowledge-basics
+maintainers:
+- name: Salesforce
+  email: developer@salesforce.com
+  url: https://developer.salesforce.com/
