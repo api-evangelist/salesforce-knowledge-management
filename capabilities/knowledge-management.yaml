@@ -1,0 +1,241 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Salesforce Knowledge Management"
+  description: >-
+    Unified workflow capability for managing Salesforce Knowledge articles across
+    the full article lifecycle: creation, editing, categorization, publishing,
+    and surfacing relevant articles for case deflection and agent assistance.
+  tags:
+    - Salesforce
+    - Knowledge Management
+    - Articles
+    - Support
+    - CRM
+    - Customer Service
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SALESFORCE_ACCESS_TOKEN: SALESFORCE_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: salesforce-knowledge
+      location: ./shared/knowledge-rest-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: knowledge-management-api
+      description: "Unified REST API for Salesforce Knowledge Management."
+      resources:
+        - path: /v1/articles
+          name: articles
+          description: "Knowledge article management"
+          operations:
+            - method: GET
+              name: list-knowledge-articles
+              description: "List all knowledge articles"
+              call: "salesforce-knowledge.list-knowledge-articles"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-knowledge-article
+              description: "Create a knowledge article draft"
+              call: "salesforce-knowledge.create-knowledge-article"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/articles/{articleId}
+          name: article
+          description: "Individual article operations"
+          operations:
+            - method: GET
+              name: get-knowledge-article
+              description: "Get a knowledge article"
+              call: "salesforce-knowledge.get-knowledge-article"
+              with:
+                articleId: "rest.articleId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/articles/{articleId}/detail
+          name: article-detail
+          description: "Full article content"
+          operations:
+            - method: GET
+              name: get-article-detail
+              description: "Get full article content"
+              call: "salesforce-knowledge.get-knowledge-article-detail"
+              with:
+                articleId: "rest.articleId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/articles/publish
+          name: publish-articles
+          description: "Publish article versions"
+          operations:
+            - method: POST
+              name: publish-articles
+              description: "Publish knowledge articles"
+              call: "salesforce-knowledge.publish-knowledge-articles"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/search
+          name: search
+          description: "Knowledge article search"
+          operations:
+            - method: GET
+              name: search-articles
+              description: "Search knowledge articles"
+              call: "salesforce-knowledge.search-knowledge-articles"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/suggestions
+          name: suggestions
+          description: "Article suggestions for cases"
+          operations:
+            - method: GET
+              name: get-suggestions
+              description: "Get article suggestions"
+              call: "salesforce-knowledge.get-suggested-articles"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/categories
+          name: categories
+          description: "Data category management"
+          operations:
+            - method: GET
+              name: list-categories
+              description: "List data category groups"
+              call: "salesforce-knowledge.list-data-category-groups"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: knowledge-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted Salesforce Knowledge Management."
+      tools:
+        - name: list-knowledge-articles
+          description: "List all knowledge articles in the Salesforce org"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "salesforce-knowledge.list-knowledge-articles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-knowledge-article
+          description: "Get metadata for a specific knowledge article by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "salesforce-knowledge.get-knowledge-article"
+          with:
+            articleId: "tools.articleId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-article-full-content
+          description: "Get the full body content and metadata of a knowledge article"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "salesforce-knowledge.get-knowledge-article-detail"
+          with:
+            articleId: "tools.articleId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-knowledge-articles
+          description: "Search knowledge articles by keywords, channel, and category filters"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "salesforce-knowledge.search-knowledge-articles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-article-suggestions-for-case
+          description: "Get relevant article suggestions based on case subject or description"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "salesforce-knowledge.get-suggested-articles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-knowledge-article
+          description: "Create a new draft knowledge article"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "salesforce-knowledge.create-knowledge-article"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-knowledge-article
+          description: "Update an existing knowledge article draft"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "salesforce-knowledge.update-knowledge-article"
+          with:
+            versionId: "tools.versionId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: publish-knowledge-articles
+          description: "Publish knowledge article versions to configured channels"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "salesforce-knowledge.publish-knowledge-articles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-knowledge-article
+          description: "Delete a knowledge article draft version"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "salesforce-knowledge.delete-knowledge-article"
+          with:
+            versionId: "tools.versionId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-data-category-groups
+          description: "List data category groups used to organize knowledge articles"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "salesforce-knowledge.list-data-category-groups"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-data-categories
+          description: "List categories within a data category group"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "salesforce-knowledge.list-data-categories"
+          with:
+            group: "tools.group"
+          outputParameters:
+            - type: object
+              mapping: "$."

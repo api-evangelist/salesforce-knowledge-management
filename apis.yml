@@ -1,21 +1,28 @@
 name: Salesforce Knowledge Management
 description: >-
   API for managing knowledge articles, categories, and data in Salesforce Knowledge.
+  Enables creating, reading, updating, publishing, and archiving knowledge articles
+  for customer self-service and agent-assisted support scenarios across multiple
+  channels including internal app, public knowledge base, and customer portals.
 image: https://www.salesforce.com/content/dam/web/en_us/www/images/sf-logo.svg
 url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+created: '2024'
+modified: '2026-05-02'
+specificationVersion: '0.18'
 tags:
   - Articles
   - CRM
+  - Customer Service
   - Documentation
   - Knowledge Management
   - Support
-created: '2024'
-modified: '2024'
-specificationVersion: '0.18'
 apis:
   - name: Salesforce Knowledge REST API
     description: >-
-      REST API for accessing and managing knowledge articles and their metadata.
+      REST API for accessing and managing Salesforce Knowledge articles, categories,
+      and knowledge base content. Enables creating, reading, updating, publishing,
+      and archiving knowledge articles for customer self-service and agent-assisted
+      support scenarios.
     image: https://www.salesforce.com/content/dam/web/en_us/www/images/sf-logo.svg
     humanURL: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
     baseURL: https://yourInstance.salesforce.com/services/data/v59.0/support
@@ -27,7 +34,7 @@ apis:
       - type: Documentation
         url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development.htm
       - type: OpenAPI
-        url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/sforce_api_rest_knowledge.htm
+        url: openapi/salesforce-knowledge-management-rest-api-openapi.yml
       - type: Authentication
         url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
     contact:
@@ -69,7 +76,22 @@ common:
     url: https://www.salesforce.com/company/privacy/
   - type: Trailhead Learning
     url: https://trailhead.salesforce.com/en/content/learn/modules/knowledge-basics
+  - type: GitHub Organization
+    url: https://github.com/salesforce
+  - type: Spectral Rules
+    url: rules/salesforce-knowledge-management-rules.yml
+  - type: Capabilities
+    url: capabilities/knowledge-management.yaml
+  - type: JSON Schema
+    url: json-schema/salesforce-knowledge-management-article-schema.json
+    title: Knowledge Article Schema
+  - type: JSON Schema
+    url: json-schema/salesforce-knowledge-management-category-schema.json
+    title: Knowledge Category Schema
+  - type: JSON-LD Context
+    url: json-ld/salesforce-knowledge-management-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/salesforce-knowledge-management-vocabulary.yml
 maintainers:
-  - name: Salesforce
-    email: developer@salesforce.com
-    url: https://developer.salesforce.com/
+  - FN: Kin Lane
+    email: kin@apievangelist.com

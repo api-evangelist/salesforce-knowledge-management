@@ -1,0 +1,108 @@
+{
+  "title": "Salesforce Knowledge Article Structure",
+  "description": "Structural documentation for the Salesforce Knowledge Article resource.",
+  "resource": "KnowledgeArticle",
+  "baseUri": "https://{instance}.salesforce.com/services/data/v59.0/support/knowledgeArticles",
+  "fields": [
+    {
+      "name": "Id",
+      "type": "string",
+      "required": true,
+      "description": "Unique Salesforce record ID",
+      "example": "ka0xx000000AbCdAAK"
+    },
+    {
+      "name": "KnowledgeArticleId",
+      "type": "string",
+      "required": false,
+      "description": "Master article ID shared across versions",
+      "example": "kA0xx000000AbCdAAK"
+    },
+    {
+      "name": "Title",
+      "type": "string",
+      "required": true,
+      "description": "Article title displayed in search results and article pages",
+      "example": "How to Reset Your Password"
+    },
+    {
+      "name": "UrlName",
+      "type": "string",
+      "required": false,
+      "description": "URL slug used in Knowledge Base article URLs",
+      "example": "how-to-reset-your-password"
+    },
+    {
+      "name": "Summary",
+      "type": "string",
+      "required": false,
+      "description": "Short excerpt displayed in search results",
+      "example": "Step-by-step guide for resetting your Salesforce account password."
+    },
+    {
+      "name": "PublishStatus",
+      "type": "string",
+      "required": true,
+      "description": "Article lifecycle status",
+      "enum": ["Online", "Draft", "Archived"],
+      "example": "Online"
+    },
+    {
+      "name": "Language",
+      "type": "string",
+      "required": false,
+      "description": "Article language code",
+      "example": "en_US"
+    },
+    {
+      "name": "VersionNumber",
+      "type": "integer",
+      "required": false,
+      "description": "Incremented each time the article is published",
+      "example": 2
+    },
+    {
+      "name": "LastPublishedDate",
+      "type": "datetime",
+      "required": false,
+      "description": "ISO 8601 timestamp of last publication",
+      "example": "2024-09-01T08:00:00.000Z"
+    },
+    {
+      "name": "IsVisibleInApp",
+      "type": "boolean",
+      "required": false,
+      "description": "Visible in internal Salesforce app channel",
+      "example": true
+    },
+    {
+      "name": "IsVisibleInPkb",
+      "type": "boolean",
+      "required": false,
+      "description": "Visible in Public Knowledge Base",
+      "example": true
+    }
+  ],
+  "channels": [
+    {
+      "name": "App",
+      "description": "Internal Salesforce agent/app channel",
+      "field": "IsVisibleInApp"
+    },
+    {
+      "name": "Pkb",
+      "description": "Public Knowledge Base for self-service",
+      "field": "IsVisibleInPkb"
+    },
+    {
+      "name": "Csp",
+      "description": "Customer Portal channel",
+      "field": "IsVisibleInCsp"
+    },
+    {
+      "name": "Prm",
+      "description": "Partner Relationship Management channel",
+      "field": "IsVisibleInPrm"
+    }
+  ]
+}

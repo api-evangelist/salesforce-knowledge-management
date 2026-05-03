@@ -1,0 +1,30 @@
+{
+  "title": "Create Knowledge Article Example",
+  "description": "Example request and response for creating a Salesforce Knowledge article draft",
+  "operation": "createKnowledgeArticle",
+  "method": "POST",
+  "path": "/sobjects/KnowledgeArticleVersion",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "Title": "How to Enable Two-Factor Authentication",
+      "UrlName": "how-to-enable-two-factor-authentication",
+      "Summary": "Step-by-step instructions for enabling 2FA on your Salesforce account.",
+      "Language": "en_US"
+    }
+  },
+  "response": {
+    "statusCode": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "ka0xx000000XyZwAAK",
+      "success": true,
+      "errors": []
+    }
+  }
+}

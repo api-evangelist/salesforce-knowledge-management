@@ -1,0 +1,630 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Knowledge Management REST API
+  description: >-
+    REST API for accessing and managing Salesforce Knowledge articles, categories,
+    and knowledge base content. Enables creating, reading, updating, publishing,
+    and archiving knowledge articles for customer self-service and agent-assisted
+    support scenarios.
+  version: 59.0.0
+  termsOfService: https://www.salesforce.com/company/legal/agreements/
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/agreements/
+externalDocs:
+  description: Salesforce Knowledge REST API Developer Guide
+  url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+servers:
+  - url: https://{instance}.salesforce.com/services/data/v59.0
+    description: Salesforce Production or Developer Edition
+    variables:
+      instance:
+        default: yourInstance
+        description: Your Salesforce instance identifier
+security:
+  - oauth2: []
+  - bearerAuth: []
+tags:
+  - name: Articles
+    description: Knowledge article management operations
+  - name: Article Types
+    description: Article type and layout metadata
+  - name: Categories
+    description: Data category management for knowledge articles
+  - name: Search
+    description: Knowledge article search operations
+  - name: Suggestions
+    description: Article suggestion operations for cases and communities
+paths:
+  /sobjects/KnowledgeArticle:
+    get:
+      operationId: listKnowledgeArticles
+      summary: List Knowledge Articles
+      description: >-
+        Retrieves a list of knowledge articles available in the org, including
+        their metadata, publication status, and associated article types.
+      tags:
+        - Articles
+      parameters:
+        - name: queryLocator
+          in: query
+          required: false
+          description: Locator for paginating through large result sets
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          required: false
+          description: Number of results per page (max 100)
+          schema:
+            type: integer
+            maximum: 100
+            default: 25
+      responses:
+        '200':
+          description: Successfully retrieved list of knowledge articles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeArticleListResponse'
+        '401':
+          description: Unauthorized
+  /sobjects/KnowledgeArticle/{articleId}:
+    get:
+      operationId: getKnowledgeArticle
+      summary: Get Knowledge Article
+      description: >-
+        Retrieves details for a specific knowledge article including its
+        current publication status, version, and metadata.
+      tags:
+        - Articles
+      parameters:
+        - name: articleId
+          in: path
+          required: true
+          description: The Salesforce ID of the KnowledgeArticle record
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved knowledge article
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeArticle'
+        '404':
+          description: Article not found
+  /support/knowledgeArticles:
+    get:
+      operationId: searchKnowledgeArticles
+      summary: Search Knowledge Articles
+      description: >-
+        Searches and retrieves knowledge articles visible to the specified
+        channel (internal, public site, or community). Supports keyword
+        search, filtering by article type, and category filters.
+      tags:
+        - Search
+        - Articles
+      parameters:
+        - name: channel
+          in: query
+          required: false
+          description: The channel to filter articles by
+          schema:
+            type: string
+            enum:
+              - App
+              - Pkb
+              - Csp
+              - Prm
+              - AllChannels
+            default: App
+        - name: categories
+          in: query
+          required: false
+          description: Map of category group to category value for filtering
+          schema:
+            type: string
+        - name: queryMethod
+          in: query
+          required: false
+          description: Method used to query the articles
+          schema:
+            type: string
+            enum:
+              - AT
+              - BELOW
+              - ABOVE
+              - ABOVE_OR_BELOW
+        - name: sort
+          in: query
+          required: false
+          description: Sort field for results
+          schema:
+            type: string
+            enum:
+              - LastPublishedDate
+              - CreatedDate
+              - Title
+              - ViewScore
+        - name: order
+          in: query
+          required: false
+          description: Sort order
+          schema:
+            type: string
+            enum:
+              - ASC
+              - DESC
+        - name: pageSize
+          in: query
+          required: false
+          description: Number of articles per page
+          schema:
+            type: integer
+            default: 25
+        - name: pageNumber
+          in: query
+          required: false
+          description: Page number to retrieve
+          schema:
+            type: integer
+            default: 1
+      responses:
+        '200':
+          description: Successfully retrieved knowledge articles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeArticleSearchResponse'
+        '400':
+          description: Invalid query parameters
+  /support/knowledgeArticles/{articleId}:
+    get:
+      operationId: getKnowledgeArticleDetail
+      summary: Get Knowledge Article Detail
+      description: >-
+        Retrieves the full content and metadata for a specific knowledge article,
+        including all article body fields and channel visibility settings.
+      tags:
+        - Articles
+      parameters:
+        - name: articleId
+          in: path
+          required: true
+          description: The Salesforce ID of the article
+          schema:
+            type: string
+        - name: channel
+          in: query
+          required: false
+          description: The channel context for the article view
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved article detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeArticleDetail'
+        '404':
+          description: Article not found
+  /sobjects/KnowledgeArticleVersion:
+    post:
+      operationId: createKnowledgeArticle
+      summary: Create Knowledge Article
+      description: >-
+        Creates a new knowledge article draft. The article must be published
+        separately after creation.
+      tags:
+        - Articles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KnowledgeArticleInput'
+      responses:
+        '201':
+          description: Knowledge article created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateResponse'
+        '400':
+          description: Invalid request - validation error
+  /sobjects/KnowledgeArticleVersion/{versionId}:
+    patch:
+      operationId: updateKnowledgeArticle
+      summary: Update Knowledge Article
+      description: >-
+        Updates fields on a knowledge article version. Only draft articles
+        can be updated; published articles must be cloned first.
+      tags:
+        - Articles
+      parameters:
+        - name: versionId
+          in: path
+          required: true
+          description: The Salesforce ID of the KnowledgeArticleVersion record
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KnowledgeArticleUpdateInput'
+      responses:
+        '204':
+          description: Article updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Article version not found
+    delete:
+      operationId: deleteKnowledgeArticle
+      summary: Delete Knowledge Article
+      description: >-
+        Deletes a knowledge article version. Only draft articles can be deleted.
+        Published articles must be archived before deletion.
+      tags:
+        - Articles
+      parameters:
+        - name: versionId
+          in: path
+          required: true
+          description: The Salesforce ID of the KnowledgeArticleVersion record
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Article deleted successfully
+        '404':
+          description: Article version not found
+  /actions/standard/publishKnowledgeArticles:
+    post:
+      operationId: publishKnowledgeArticles
+      summary: Publish Knowledge Articles
+      description: >-
+        Publishes one or more knowledge article versions, making them visible
+        to the configured channels.
+      tags:
+        - Articles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishArticlesInput'
+      responses:
+        '200':
+          description: Articles published successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishArticlesResponse'
+        '400':
+          description: Publish failed - validation errors
+  /support/dataCategoryGroups:
+    get:
+      operationId: listDataCategoryGroups
+      summary: List Data Category Groups
+      description: >-
+        Returns a list of data category groups available for categorizing
+        knowledge articles.
+      tags:
+        - Categories
+      parameters:
+        - name: sObjectName
+          in: query
+          required: false
+          description: The SObject type to filter categories for
+          schema:
+            type: string
+            default: KnowledgeArticle
+      responses:
+        '200':
+          description: Successfully retrieved data category groups
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCategoryGroupList'
+  /support/dataCategoryGroups/{group}/dataCategories:
+    get:
+      operationId: listDataCategories
+      summary: List Data Categories
+      description: >-
+        Returns the categories within a specific data category group,
+        including the category hierarchy.
+      tags:
+        - Categories
+      parameters:
+        - name: group
+          in: path
+          required: true
+          description: The data category group API name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved data categories
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCategoryList'
+  /support/suggestedArticles:
+    get:
+      operationId: getSuggestedArticles
+      summary: Get Suggested Articles
+      description: >-
+        Returns knowledge article suggestions based on case subject, description,
+        or a search query. Used to surface relevant articles during case creation.
+      tags:
+        - Suggestions
+      parameters:
+        - name: channel
+          in: query
+          required: false
+          description: The channel for the suggested articles
+          schema:
+            type: string
+        - name: subject
+          in: query
+          required: false
+          description: Case subject text used for article suggestion
+          schema:
+            type: string
+        - name: description
+          in: query
+          required: false
+          description: Case description text used for article suggestion
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: Maximum number of suggestions to return
+          schema:
+            type: integer
+            default: 5
+      responses:
+        '200':
+          description: Successfully retrieved article suggestions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestedArticlesResponse'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            full: Full access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    KnowledgeArticleListResponse:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+        done:
+          type: boolean
+        nextRecordsUrl:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeArticleSummary'
+    KnowledgeArticleSummary:
+      type: object
+      properties:
+        Id:
+          type: string
+        KnowledgeArticleId:
+          type: string
+        Title:
+          type: string
+        UrlName:
+          type: string
+        PublishStatus:
+          type: string
+          enum:
+            - Online
+            - Draft
+            - Archived
+        Language:
+          type: string
+        VersionNumber:
+          type: integer
+        LastPublishedDate:
+          type: string
+          format: date-time
+        CreatedDate:
+          type: string
+          format: date-time
+    KnowledgeArticle:
+      type: object
+      properties:
+        Id:
+          type: string
+        Title:
+          type: string
+        UrlName:
+          type: string
+        Summary:
+          type: string
+        PublishStatus:
+          type: string
+        Language:
+          type: string
+        VersionNumber:
+          type: integer
+        LastPublishedDate:
+          type: string
+          format: date-time
+        CreatedDate:
+          type: string
+          format: date-time
+        CreatedById:
+          type: string
+        LastModifiedDate:
+          type: string
+          format: date-time
+    KnowledgeArticleSearchResponse:
+      type: object
+      properties:
+        currentPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeArticleSummary'
+    KnowledgeArticleDetail:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        summary:
+          type: string
+        urlName:
+          type: string
+        publishStatus:
+          type: string
+        language:
+          type: string
+        lastPublishedDate:
+          type: string
+          format: date-time
+        articleBody:
+          type: string
+          description: HTML body content of the article
+        categories:
+          type: array
+          items:
+            type: object
+            properties:
+              groupName:
+                type: string
+              groupLabel:
+                type: string
+              selectedCategories:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    label:
+                      type: string
+    KnowledgeArticleInput:
+      type: object
+      required:
+        - Title
+      properties:
+        Title:
+          type: string
+          description: Article title
+        UrlName:
+          type: string
+          description: URL-friendly slug for the article
+        Summary:
+          type: string
+          description: Short summary of the article content
+        Language:
+          type: string
+          description: Article language code (e.g., en_US)
+          default: en_US
+    KnowledgeArticleUpdateInput:
+      type: object
+      properties:
+        Title:
+          type: string
+        Summary:
+          type: string
+        UrlName:
+          type: string
+    PublishArticlesInput:
+      type: object
+      properties:
+        inputs:
+          type: array
+          items:
+            type: object
+            properties:
+              knowledgeArticleVersionId:
+                type: string
+                description: ID of the article version to publish
+    PublishArticlesResponse:
+      type: object
+      properties:
+        outputValues:
+          type: object
+        errors:
+          type: array
+          items:
+            type: string
+    DataCategoryGroupList:
+      type: object
+      properties:
+        categoryGroups:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              name:
+                type: string
+              objectUsage:
+                type: string
+    DataCategoryList:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              name:
+                type: string
+              subcategories:
+                type: array
+                items:
+                  type: object
+    SuggestedArticlesResponse:
+      type: object
+      properties:
+        suggestedArticles:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeArticleSummary'
+    CreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        success:
+          type: boolean
+        errors:
+          type: array
+          items:
+            type: string

@@ -1,0 +1,51 @@
+{
+  "title": "Search Knowledge Articles Example",
+  "description": "Example request and response for searching Salesforce Knowledge articles",
+  "operation": "searchKnowledgeArticles",
+  "method": "GET",
+  "path": "/support/knowledgeArticles",
+  "request": {
+    "queryParameters": {
+      "channel": "App",
+      "sort": "LastPublishedDate",
+      "order": "DESC",
+      "pageSize": "10"
+    },
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "statusCode": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "currentPageUrl": "/services/data/v59.0/support/knowledgeArticles?pageNumber=1&pageSize=10",
+      "nextPageUrl": "/services/data/v59.0/support/knowledgeArticles?pageNumber=2&pageSize=10",
+      "articles": [
+        {
+          "Id": "ka0xx000000AbCdAAK",
+          "KnowledgeArticleId": "kA0xx000000AbCdAAK",
+          "Title": "How to Reset Your Password",
+          "UrlName": "how-to-reset-your-password",
+          "PublishStatus": "Online",
+          "Language": "en_US",
+          "VersionNumber": 3,
+          "LastPublishedDate": "2024-09-01T08:00:00.000Z"
+        },
+        {
+          "Id": "ka0xx000000EfGhBBL",
+          "KnowledgeArticleId": "kA0xx000000EfGhBBL",
+          "Title": "Getting Started with Salesforce Mobile",
+          "UrlName": "getting-started-salesforce-mobile",
+          "PublishStatus": "Online",
+          "Language": "en_US",
+          "VersionNumber": 2,
+          "LastPublishedDate": "2024-08-15T10:30:00.000Z"
+        }
+      ]
+    }
+  }
+}

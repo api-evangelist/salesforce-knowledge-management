@@ -1,0 +1,80 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "sf": "https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "KnowledgeArticle": {
+      "@id": "schema:Article",
+      "@type": "@id"
+    },
+    "Title": {
+      "@id": "schema:headline",
+      "@type": "xsd:string"
+    },
+    "Summary": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "UrlName": {
+      "@id": "schema:url",
+      "@type": "xsd:string"
+    },
+    "PublishStatus": {
+      "@id": "schema:creativeWorkStatus",
+      "@type": "xsd:string"
+    },
+    "Language": {
+      "@id": "schema:inLanguage",
+      "@type": "xsd:string"
+    },
+    "VersionNumber": {
+      "@id": "schema:version",
+      "@type": "xsd:integer"
+    },
+    "LastPublishedDate": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:dateTime"
+    },
+    "CreatedDate": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "LastModifiedDate": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "CreatedById": {
+      "@id": "schema:author",
+      "@type": "xsd:string"
+    },
+    "OwnerId": {
+      "@id": "schema:accountablePerson",
+      "@type": "xsd:string"
+    },
+    "DataCategory": {
+      "@id": "schema:DefinedTerm",
+      "@type": "@id"
+    },
+    "label": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "childCategories": {
+      "@id": "schema:hasPart",
+      "@container": "@list"
+    },
+    "articleBody": {
+      "@id": "schema:articleBody",
+      "@type": "xsd:string"
+    },
+    "categories": {
+      "@id": "schema:about",
+      "@container": "@list"
+    }
+  }
+}

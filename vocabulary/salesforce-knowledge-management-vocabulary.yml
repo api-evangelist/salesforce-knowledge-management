@@ -1,0 +1,145 @@
+name: Salesforce Knowledge Management Vocabulary
+description: >-
+  Domain vocabulary and taxonomy for Salesforce Knowledge Management,
+  covering article types, publication statuses, channels, and key
+  concepts used across the Knowledge API.
+version: "1.0"
+created: "2026-05-02"
+modified: "2026-05-02"
+source: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+
+terms:
+  - term: Knowledge Article
+    definition: >-
+      A unit of information in Salesforce Knowledge that documents a specific
+      topic, solution, or process. Articles are versioned, categorized, and
+      published to one or more channels.
+    aliases:
+      - Article
+      - KA
+    related:
+      - Article Version
+      - Article Type
+
+  - term: Article Version
+    definition: >-
+      A specific version of a Knowledge Article. Each time an article is edited
+      and re-published, a new version is created. The current published version
+      has PublishStatus of Online.
+    related:
+      - Knowledge Article
+      - PublishStatus
+
+  - term: Article Type
+    definition: >-
+      A custom layout that defines the fields available on a Knowledge Article.
+      Organizations can create custom article types (e.g., FAQ, How-To, Reference)
+      with specific rich text, file, and picklist fields.
+    related:
+      - Knowledge Article
+
+  - term: PublishStatus
+    definition: >-
+      The lifecycle state of a Knowledge Article version. Online articles are
+      visible to configured channels; Draft articles are in progress; Archived
+      articles are retired from publication.
+    values:
+      - Online
+      - Draft
+      - Archived
+
+  - term: Channel
+    definition: >-
+      The audience or interface through which a knowledge article is made
+      available. Salesforce Knowledge supports four channels: App (internal),
+      Public Knowledge Base (PKB), Customer Portal (CSP), and Partner Portal (PRM).
+    values:
+      - App
+      - Pkb
+      - Csp
+      - Prm
+      - AllChannels
+
+  - term: Data Category
+    definition: >-
+      A hierarchical classification system for organizing Knowledge Articles.
+      Category groups contain individual categories that can be assigned to
+      articles to enable filtering in search.
+    related:
+      - Data Category Group
+      - Article
+
+  - term: Data Category Group
+    definition: >-
+      The top-level container for data categories. Organizations create
+      category groups for domains such as Products, Industries, or Regions.
+    related:
+      - Data Category
+
+  - term: Article Suggestion
+    definition: >-
+      Knowledge articles surfaced automatically based on case subject or
+      description text. Used to deflect cases during creation by offering
+      relevant self-service content.
+    related:
+      - Case
+      - Knowledge Article
+
+  - term: UrlName
+    definition: >-
+      A URL-friendly slug derived from the article title, used in Knowledge
+      Base article URLs. Must be unique and use only lowercase letters,
+      numbers, and hyphens.
+    related:
+      - Knowledge Article
+
+  - term: Case Deflection
+    definition: >-
+      The practice of surfacing Knowledge Articles to customers or agents
+      during case creation to resolve issues without creating a support case.
+    related:
+      - Article Suggestion
+      - Knowledge Article
+
+  - term: Translation
+    definition: >-
+      A localized version of a Knowledge Article in a specific language.
+      Knowledge supports multiple language translations of the same article.
+    related:
+      - Knowledge Article
+      - Language
+
+  - term: Article Feedback
+    definition: >-
+      Customer or agent ratings and comments on Knowledge Articles, used
+      to measure article quality and guide content improvement.
+    related:
+      - Knowledge Article
+
+categories:
+  - name: Article Lifecycle
+    description: States and transitions in the knowledge article lifecycle
+    terms:
+      - Knowledge Article
+      - Article Version
+      - PublishStatus
+
+  - name: Content Organization
+    description: How articles are classified and organized
+    terms:
+      - Article Type
+      - Data Category
+      - Data Category Group
+      - Channel
+
+  - name: Customer Service
+    description: How knowledge is used in customer support workflows
+    terms:
+      - Article Suggestion
+      - Case Deflection
+      - Article Feedback
+
+  - name: Localization
+    description: Multi-language article support
+    terms:
+      - Translation

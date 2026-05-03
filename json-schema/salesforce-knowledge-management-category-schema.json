@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/salesforce-knowledge-management/blob/main/json-schema/salesforce-knowledge-management-category-schema.json",
+  "title": "Salesforce Knowledge Data Category",
+  "description": "Schema for Salesforce Knowledge data categories used to organize and filter articles.",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Display label for the data category"
+    },
+    "name": {
+      "type": "string",
+      "description": "API name for the data category"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the data category resource"
+    },
+    "childCategories": {
+      "type": "array",
+      "description": "Sub-categories under this category",
+      "items": {
+        "$ref": "#"
+      }
+    }
+  },
+  "required": ["name", "label"]
+}

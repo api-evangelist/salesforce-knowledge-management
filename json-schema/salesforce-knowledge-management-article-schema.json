@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/salesforce-knowledge-management/blob/main/json-schema/salesforce-knowledge-management-article-schema.json",
+  "title": "Salesforce Knowledge Article",
+  "description": "Schema for a Salesforce Knowledge article record.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "Salesforce record ID for the KnowledgeArticle"
+    },
+    "KnowledgeArticleId": {
+      "type": "string",
+      "description": "The master article ID shared across all versions"
+    },
+    "Title": {
+      "type": "string",
+      "description": "Title of the knowledge article"
+    },
+    "UrlName": {
+      "type": "string",
+      "description": "URL-friendly slug used in article URLs",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "Summary": {
+      "type": "string",
+      "description": "Short summary of the article content"
+    },
+    "PublishStatus": {
+      "type": "string",
+      "description": "Current publication status of the article",
+      "enum": ["Online", "Draft", "Archived"]
+    },
+    "Language": {
+      "type": "string",
+      "description": "Language code for the article (e.g., en_US, fr, de)",
+      "examples": ["en_US", "fr", "de", "es", "ja"]
+    },
+    "VersionNumber": {
+      "type": "integer",
+      "description": "Version number of the article",
+      "minimum": 1
+    },
+    "IsVisibleInApp": {
+      "type": "boolean",
+      "description": "Whether the article is visible in the Salesforce app channel"
+    },
+    "IsVisibleInPkb": {
+      "type": "boolean",
+      "description": "Whether the article is visible in the Public Knowledge Base channel"
+    },
+    "IsVisibleInCsp": {
+      "type": "boolean",
+      "description": "Whether the article is visible in the Customer Portal channel"
+    },
+    "IsVisibleInPrm": {
+      "type": "boolean",
+      "description": "Whether the article is visible in the Partner Portal channel"
+    },
+    "LastPublishedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the article was last published"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the article was created"
+    },
+    "LastModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the article was last modified"
+    },
+    "CreatedById": {
+      "type": "string",
+      "description": "Salesforce ID of the user who created the article"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Salesforce ID of the article owner"
+    }
+  },
+  "required": ["Title", "PublishStatus"]
+}
