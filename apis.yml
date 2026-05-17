@@ -60,23 +60,23 @@ apis:
       - type: Authentication
         url: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_quickstart_intro.htm
 common:
-  - type: Getting Started
+  - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development_intro.htm
   - type: Authentication
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
-  - type: Rate Limits
+  - type: RateLimits
     url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm
   - type: SDKs
     url: https://developer.salesforce.com/tools/sdks
-  - type: Status
+  - type: StatusPage
     url: https://status.salesforce.com/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.salesforce.com/company/legal/agreements/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.salesforce.com/company/privacy/
   - type: Trailhead Learning
     url: https://trailhead.salesforce.com/en/content/learn/modules/knowledge-basics
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/salesforce
   - type: Spectral Rules
     url: rules/salesforce-knowledge-management-rules.yml
