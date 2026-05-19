@@ -1,0 +1,97 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Knowledge Management REST API — Suggestions
+  description: 'Salesforce Knowledge Management REST API — Suggestions. 1 operations. Lead operation: Get Suggested Articles.
+    Self-contained Naftiko capability covering one Salesforce Knowledge Management business surface.'
+  tags:
+  - Salesforce Knowledge Management
+  - Suggestions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_KNOWLEDGE_MANAGEMENT_API_KEY: SALESFORCE_KNOWLEDGE_MANAGEMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-suggestions
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0
+    description: Salesforce Knowledge Management REST API — Suggestions business capability. Self-contained, no shared references.
+    resources:
+    - name: support-suggestedArticles
+      path: /support/suggestedArticles
+      operations:
+      - name: getsuggestedarticles
+        method: GET
+        description: Get Suggested Articles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: channel
+          in: query
+          type: string
+          description: The channel for the suggested articles
+        - name: subject
+          in: query
+          type: string
+          description: Case subject text used for article suggestion
+        - name: description
+          in: query
+          type: string
+          description: Case description text used for article suggestion
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of suggestions to return
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_KNOWLEDGE_MANAGEMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-suggestions-rest
+    port: 8080
+    description: REST adapter for Salesforce Knowledge Management REST API — Suggestions. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/support/suggestedarticles
+      name: support-suggestedarticles
+      description: REST surface for support-suggestedArticles.
+      operations:
+      - method: GET
+        name: getsuggestedarticles
+        description: Get Suggested Articles
+        call: rest-suggestions.getsuggestedarticles
+        with:
+          channel: rest.channel
+          subject: rest.subject
+          description: rest.description
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-suggestions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Knowledge Management REST API — Suggestions. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-suggested-articles
+      description: Get Suggested Articles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-suggestions.getsuggestedarticles
+      with:
+        channel: tools.channel
+        subject: tools.subject
+        description: tools.description
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.

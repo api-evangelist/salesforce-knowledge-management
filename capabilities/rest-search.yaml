@@ -1,0 +1,115 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Knowledge Management REST API — Search
+  description: 'Salesforce Knowledge Management REST API — Search. 1 operations. Lead operation: Search Knowledge Articles.
+    Self-contained Naftiko capability covering one Salesforce Knowledge Management business surface.'
+  tags:
+  - Salesforce Knowledge Management
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_KNOWLEDGE_MANAGEMENT_API_KEY: SALESFORCE_KNOWLEDGE_MANAGEMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-search
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0
+    description: Salesforce Knowledge Management REST API — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: support-knowledgeArticles
+      path: /support/knowledgeArticles
+      operations:
+      - name: searchknowledgearticles
+        method: GET
+        description: Search Knowledge Articles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: channel
+          in: query
+          type: string
+          description: The channel to filter articles by
+        - name: categories
+          in: query
+          type: string
+          description: Map of category group to category value for filtering
+        - name: queryMethod
+          in: query
+          type: string
+          description: Method used to query the articles
+        - name: sort
+          in: query
+          type: string
+          description: Sort field for results
+        - name: order
+          in: query
+          type: string
+          description: Sort order
+        - name: pageSize
+          in: query
+          type: integer
+          description: Number of articles per page
+        - name: pageNumber
+          in: query
+          type: integer
+          description: Page number to retrieve
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_KNOWLEDGE_MANAGEMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-search-rest
+    port: 8080
+    description: REST adapter for Salesforce Knowledge Management REST API — Search. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/support/knowledgearticles
+      name: support-knowledgearticles
+      description: REST surface for support-knowledgeArticles.
+      operations:
+      - method: GET
+        name: searchknowledgearticles
+        description: Search Knowledge Articles
+        call: rest-search.searchknowledgearticles
+        with:
+          channel: rest.channel
+          categories: rest.categories
+          queryMethod: rest.queryMethod
+          sort: rest.sort
+          order: rest.order
+          pageSize: rest.pageSize
+          pageNumber: rest.pageNumber
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Knowledge Management REST API — Search. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: search-knowledge-articles
+      description: Search Knowledge Articles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-search.searchknowledgearticles
+      with:
+        channel: tools.channel
+        categories: tools.categories
+        queryMethod: tools.queryMethod
+        sort: tools.sort
+        order: tools.order
+        pageSize: tools.pageSize
+        pageNumber: tools.pageNumber
+      outputParameters:
+      - type: object
+        mapping: $.
