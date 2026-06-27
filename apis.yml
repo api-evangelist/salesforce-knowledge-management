@@ -77,17 +77,17 @@ common:
     url: https://trailhead.salesforce.com/en/content/learn/modules/knowledge-basics
   - type: GitHubOrganization
     url: https://github.com/salesforce
-  - type: Spectral Rules
+  - type: SpectralRules
     url: rules/salesforce-knowledge-management-rules.yml
   - type: Capabilities
     url: capabilities/knowledge-management.yaml
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/salesforce-knowledge-management-article-schema.json
     title: Knowledge Article Schema
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/salesforce-knowledge-management-category-schema.json
     title: Knowledge Category Schema
-  - type: JSON-LD Context
+  - type: JSONLDContext
     url: json-ld/salesforce-knowledge-management-context.jsonld
   - type: Vocabulary
     url: vocabulary/salesforce-knowledge-management-vocabulary.yml
