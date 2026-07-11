@@ -58,6 +58,12 @@ apis:
       - type: Authentication
         url: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_quickstart_intro.htm
 common:
+  - type: Authentication
+    url: authentication/salesforce-knowledge-management-authentication.yml
+  - type: OAuthScopes
+    url: scopes/salesforce-knowledge-management-scopes.yml
+  - url: https://developer.salesforce.com/blogs/feed
+    type: Blog
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development_intro.htm
   - type: Authentication
