@@ -58,6 +58,8 @@ apis:
       - type: Authentication
         url: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_quickstart_intro.htm
 common:
+  - type: AgenticAccess
+    url: agentic-access/salesforce-knowledge-management-agentic-access.yml
   - type: DomainSecurity
     url: security/salesforce-knowledge-management-domain-security.yml
   - type: Authentication
