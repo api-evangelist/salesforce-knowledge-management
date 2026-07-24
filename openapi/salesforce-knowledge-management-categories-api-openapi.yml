@@ -1,0 +1,118 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Knowledge Management REST Articles Categories API
+  description: REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.
+  version: 59.0.0
+  termsOfService: https://www.salesforce.com/company/legal/agreements/
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/agreements/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0
+  description: Salesforce Production or Developer Edition
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance identifier
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Categories
+  description: Data category management for knowledge articles
+paths:
+  /support/dataCategoryGroups:
+    get:
+      operationId: listDataCategoryGroups
+      summary: List Data Category Groups
+      description: Returns a list of data category groups available for categorizing knowledge articles.
+      tags:
+      - Categories
+      parameters:
+      - name: sObjectName
+        in: query
+        required: false
+        description: The SObject type to filter categories for
+        schema:
+          type: string
+          default: KnowledgeArticle
+      responses:
+        '200':
+          description: Successfully retrieved data category groups
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCategoryGroupList'
+  /support/dataCategoryGroups/{group}/dataCategories:
+    get:
+      operationId: listDataCategories
+      summary: List Data Categories
+      description: Returns the categories within a specific data category group, including the category hierarchy.
+      tags:
+      - Categories
+      parameters:
+      - name: group
+        in: path
+        required: true
+        description: The data category group API name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved data categories
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCategoryList'
+components:
+  schemas:
+    DataCategoryList:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              name:
+                type: string
+              subcategories:
+                type: array
+                items:
+                  type: object
+    DataCategoryGroupList:
+      type: object
+      properties:
+        categoryGroups:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              name:
+                type: string
+              objectUsage:
+                type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            full: Full access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+externalDocs:
+  description: Salesforce Knowledge REST API Developer Guide
+  url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/

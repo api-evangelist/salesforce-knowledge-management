@@ -1,0 +1,119 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Knowledge Management REST Articles Suggestions API
+  description: REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.
+  version: 59.0.0
+  termsOfService: https://www.salesforce.com/company/legal/agreements/
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/agreements/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0
+  description: Salesforce Production or Developer Edition
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance identifier
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Suggestions
+  description: Article suggestion operations for cases and communities
+paths:
+  /support/suggestedArticles:
+    get:
+      operationId: getSuggestedArticles
+      summary: Get Suggested Articles
+      description: Returns knowledge article suggestions based on case subject, description, or a search query. Used to surface relevant articles during case creation.
+      tags:
+      - Suggestions
+      parameters:
+      - name: channel
+        in: query
+        required: false
+        description: The channel for the suggested articles
+        schema:
+          type: string
+      - name: subject
+        in: query
+        required: false
+        description: Case subject text used for article suggestion
+        schema:
+          type: string
+      - name: description
+        in: query
+        required: false
+        description: Case description text used for article suggestion
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of suggestions to return
+        schema:
+          type: integer
+          default: 5
+      responses:
+        '200':
+          description: Successfully retrieved article suggestions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestedArticlesResponse'
+components:
+  schemas:
+    SuggestedArticlesResponse:
+      type: object
+      properties:
+        suggestedArticles:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeArticleSummary'
+    KnowledgeArticleSummary:
+      type: object
+      properties:
+        Id:
+          type: string
+        KnowledgeArticleId:
+          type: string
+        Title:
+          type: string
+        UrlName:
+          type: string
+        PublishStatus:
+          type: string
+          enum:
+          - Online
+          - Draft
+          - Archived
+        Language:
+          type: string
+        VersionNumber:
+          type: integer
+        LastPublishedDate:
+          type: string
+          format: date-time
+        CreatedDate:
+          type: string
+          format: date-time
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            full: Full access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+externalDocs:
+  description: Salesforce Knowledge REST API Developer Guide
+  url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
