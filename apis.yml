@@ -3,6 +3,19 @@ description: >-
   API for managing knowledge articles, categories, and data in Salesforce Knowledge. Enables creating, reading,
   updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios
   across multiple channels including internal app, public knowledge base, and customer portals.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.salesforce.com/content/dam/web/en_us/www/images/sf-logo.svg
 url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
 created: '2024'
@@ -16,48 +29,91 @@ tags:
   - Knowledge Management
   - Support
 apis:
-  - name: Salesforce Knowledge REST API
-    description: >-
-      REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables
-      creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and
-      agent-assisted support scenarios.
-    image: https://www.salesforce.com/content/dam/web/en_us/www/images/sf-logo.svg
-    humanURL: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
-    baseURL: https://yourInstance.salesforce.com/services/data/v59.0/support
-    tags:
-      - Articles
-      - Knowledge
-      - REST
-    properties:
-      - type: Documentation
-        url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development.htm
-      - type: OpenAPI
-        url: openapi/salesforce-knowledge-management-rest-api-openapi.yml
-      - type: Authentication
-        url: >-
-          https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
-    contact:
-      - type: Support
-        url: https://help.salesforce.com/
-      - type: Community
-        url: https://trailblazers.salesforce.com/
-  - name: Salesforce Knowledge SOAP API
-    description: SOAP API for managing knowledge articles with enterprise integration.
-    image: https://www.salesforce.com/content/dam/web/en_us/www/images/sf-logo.svg
-    humanURL: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
-    baseURL: https://yourInstance.salesforce.com/services/Soap/c/59.0
-    tags:
-      - Enterprise
-      - Knowledge
-      - SOAP
-    properties:
-      - type: Documentation
-        url: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_calls_knowledge.htm
-      - type: WSDL
-        url: https://yourInstance.salesforce.com/services/wsdl/class/KnowledgeArticleVersion
-      - type: Authentication
-        url: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_quickstart_intro.htm
+- name: Salesforce Knowledge SOAP API
+  description: SOAP API for managing knowledge articles with enterprise integration.
+  image: https://www.salesforce.com/content/dam/web/en_us/www/images/sf-logo.svg
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+  baseURL: https://yourInstance.salesforce.com/services/Soap/c/59.0
+  tags:
+  - Enterprise
+  - Knowledge
+  - SOAP
+  properties:
+  - type: Documentation
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_calls_knowledge.htm
+  - type: WSDL
+    url: https://yourInstance.salesforce.com/services/wsdl/class/KnowledgeArticleVersion
+  - type: Authentication
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_quickstart_intro.htm
+- aid: salesforce-knowledge-management:salesforce-knowledge-management-articles-api
+  name: Salesforce Knowledge Management Articles API
+  description: Knowledge article management operations
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0/support
+  tags:
+  - Articles
+  properties:
+  - type: OpenAPI
+    url: openapi/salesforce-knowledge-management-articles-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development.htm
+  - type: Authentication
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
+- aid: salesforce-knowledge-management:salesforce-knowledge-management-categories-api
+  name: Salesforce Knowledge Management Categories API
+  description: Data category management for knowledge articles
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0/support
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/salesforce-knowledge-management-categories-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development.htm
+  - type: Authentication
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
+- aid: salesforce-knowledge-management:salesforce-knowledge-management-search-api
+  name: Salesforce Knowledge Management Search API
+  description: Knowledge article search operations
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0/support
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/salesforce-knowledge-management-search-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development.htm
+  - type: Authentication
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
+- aid: salesforce-knowledge-management:salesforce-knowledge-management-suggestions-api
+  name: Salesforce Knowledge Management Suggestions API
+  description: Article suggestion operations for cases and communities
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0/support
+  tags:
+  - Suggestions
+  properties:
+  - type: OpenAPI
+    url: openapi/salesforce-knowledge-management-suggestions-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development.htm
+  - type: Authentication
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/salesforce-knowledge-management/overview
   - type: AgenticAccess
     url: agentic-access/salesforce-knowledge-management-agentic-access.yml
   - type: DomainSecurity
