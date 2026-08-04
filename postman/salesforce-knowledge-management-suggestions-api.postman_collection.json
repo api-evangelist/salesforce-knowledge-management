@@ -1,0 +1,186 @@
+{
+  "info": {
+    "_postman_id": "18beeb5e-da36-4624-8a3a-331e4ee1132e",
+    "name": "Salesforce Knowledge Management REST Articles Suggestions API",
+    "description": "REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:58.000Z",
+    "updatedAt": "2026-07-28T02:49:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-18beeb5e-da36-4624-8a3a-331e4ee1132e"
+  },
+  "item": [
+    {
+      "name": "support",
+      "item": [
+        {
+          "name": "suggestedArticles",
+          "item": [
+            {
+              "name": "Get Suggested Articles",
+              "id": "4ea60995-8012-444a-80a9-be2c259e6286",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/support/suggestedArticles?channel=<string>&subject=<string>&description=<string>&limit=5",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "support",
+                    "suggestedArticles"
+                  ],
+                  "query": [
+                    {
+                      "description": "The channel for the suggested articles",
+                      "key": "channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Case subject text used for article suggestion",
+                      "key": "subject",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Case description text used for article suggestion",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of suggestions to return",
+                      "key": "limit",
+                      "value": "5"
+                    }
+                  ]
+                },
+                "description": "Returns knowledge article suggestions based on case subject, description, or a search query. Used to surface relevant articles during case creation."
+              },
+              "response": [
+                {
+                  "id": "39e23972-2719-4526-8edf-a5680b58cef3",
+                  "name": "Successfully retrieved article suggestions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/support/suggestedArticles?channel=<string>&subject=<string>&description=<string>&limit=5",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "support",
+                        "suggestedArticles"
+                      ],
+                      "query": [
+                        {
+                          "description": "The channel for the suggested articles",
+                          "key": "channel",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Case subject text used for article suggestion",
+                          "key": "subject",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Case description text used for article suggestion",
+                          "key": "description",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of suggestions to return",
+                          "key": "limit",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"suggestedArticles\": [\n    {\n      \"Id\": \"<string>\",\n      \"KnowledgeArticleId\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"UrlName\": \"<string>\",\n      \"PublishStatus\": \"Draft\",\n      \"Language\": \"<string>\",\n      \"VersionNumber\": \"<integer>\",\n      \"LastPublishedDate\": \"<dateTime>\",\n      \"CreatedDate\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"KnowledgeArticleId\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"UrlName\": \"<string>\",\n      \"PublishStatus\": \"Draft\",\n      \"Language\": \"<string>\",\n      \"VersionNumber\": \"<integer>\",\n      \"LastPublishedDate\": \"<dateTime>\",\n      \"CreatedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:49:59.000Z",
+                  "updatedAt": "2026-07-28T02:49:59.000Z",
+                  "uid": "35240-39e23972-2719-4526-8edf-a5680b58cef3"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:59.000Z",
+              "updatedAt": "2026-07-28T02:49:59.000Z",
+              "uid": "35240-4ea60995-8012-444a-80a9-be2c259e6286"
+            }
+          ],
+          "id": "8d54101c-180a-4a0b-97af-cc25591655ae",
+          "createdAt": "2026-07-28T02:49:59.000Z",
+          "updatedAt": "2026-07-28T02:49:59.000Z",
+          "uid": "35240-8d54101c-180a-4a0b-97af-cc25591655ae"
+        }
+      ],
+      "id": "65814261-b290-4e1c-8749-9f4cf0f5c2e4",
+      "createdAt": "2026-07-28T02:49:59.000Z",
+      "updatedAt": "2026-07-28T02:49:59.000Z",
+      "uid": "35240-65814261-b290-4e1c-8749-9f4cf0f5c2e4"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api full",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0"
+    }
+  ]
+}

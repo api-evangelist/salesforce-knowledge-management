@@ -1,0 +1,1428 @@
+{
+  "info": {
+    "_postman_id": "e9ddf5a2-6314-455d-9af9-1bc3e538b401",
+    "name": "Salesforce Knowledge Management REST Articles API",
+    "description": "REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:55.000Z",
+    "updatedAt": "2026-07-28T02:49:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e9ddf5a2-6314-455d-9af9-1bc3e538b401"
+  },
+  "item": [
+    {
+      "name": "sobjects",
+      "item": [
+        {
+          "name": "KnowledgeArticle",
+          "item": [
+            {
+              "name": "{articleId}",
+              "item": [
+                {
+                  "name": "Get Knowledge Article",
+                  "id": "172e3d11-e09e-4cc9-a4cc-41cd4724eade",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/KnowledgeArticle/:articleId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "KnowledgeArticle",
+                        ":articleId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cb8a460e-104d-4691-9daf-9831aaacf924",
+                          "key": "articleId",
+                          "value": "<string>",
+                          "description": "(Required) The Salesforce ID of the KnowledgeArticle record"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves details for a specific knowledge article including its current publication status, version, and metadata."
+                  },
+                  "response": [
+                    {
+                      "id": "5ded12e8-5ad1-4166-93fa-c23e08738516",
+                      "name": "Successfully retrieved knowledge article",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/KnowledgeArticle/:articleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "KnowledgeArticle",
+                            ":articleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "articleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<string>\",\n  \"Title\": \"<string>\",\n  \"UrlName\": \"<string>\",\n  \"Summary\": \"<string>\",\n  \"PublishStatus\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"VersionNumber\": \"<integer>\",\n  \"LastPublishedDate\": \"<dateTime>\",\n  \"CreatedDate\": \"<dateTime>\",\n  \"CreatedById\": \"<string>\",\n  \"LastModifiedDate\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-5ded12e8-5ad1-4166-93fa-c23e08738516"
+                    },
+                    {
+                      "id": "5ba34f2e-7083-4920-b36d-9c99bef676b2",
+                      "name": "Article not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/KnowledgeArticle/:articleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "KnowledgeArticle",
+                            ":articleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "articleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-5ba34f2e-7083-4920-b36d-9c99bef676b2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-172e3d11-e09e-4cc9-a4cc-41cd4724eade"
+                }
+              ],
+              "id": "ecfe08de-ca6d-47ec-8462-ba0072bbc461",
+              "createdAt": "2026-07-28T02:49:56.000Z",
+              "updatedAt": "2026-07-28T02:49:56.000Z",
+              "uid": "35240-ecfe08de-ca6d-47ec-8462-ba0072bbc461"
+            },
+            {
+              "name": "List Knowledge Articles",
+              "id": "0815a31f-0288-4e12-aa57-a24de379dd8b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/KnowledgeArticle?queryLocator=<string>&pageSize=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    "KnowledgeArticle"
+                  ],
+                  "query": [
+                    {
+                      "description": "Locator for paginating through large result sets",
+                      "key": "queryLocator",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page (max 100)",
+                      "key": "pageSize",
+                      "value": "25"
+                    }
+                  ]
+                },
+                "description": "Retrieves a list of knowledge articles available in the org, including their metadata, publication status, and associated article types."
+              },
+              "response": [
+                {
+                  "id": "adc58a26-ed2e-4220-b48b-9d5ba7cb0bd6",
+                  "name": "Successfully retrieved list of knowledge articles",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/KnowledgeArticle?queryLocator=<string>&pageSize=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "KnowledgeArticle"
+                      ],
+                      "query": [
+                        {
+                          "description": "Locator for paginating through large result sets",
+                          "key": "queryLocator",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of results per page (max 100)",
+                          "key": "pageSize",
+                          "value": "25"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"totalSize\": \"<integer>\",\n  \"done\": \"<boolean>\",\n  \"nextRecordsUrl\": \"<string>\",\n  \"records\": [\n    {\n      \"Id\": \"<string>\",\n      \"KnowledgeArticleId\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"UrlName\": \"<string>\",\n      \"PublishStatus\": \"Archived\",\n      \"Language\": \"<string>\",\n      \"VersionNumber\": \"<integer>\",\n      \"LastPublishedDate\": \"<dateTime>\",\n      \"CreatedDate\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"KnowledgeArticleId\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"UrlName\": \"<string>\",\n      \"PublishStatus\": \"Archived\",\n      \"Language\": \"<string>\",\n      \"VersionNumber\": \"<integer>\",\n      \"LastPublishedDate\": \"<dateTime>\",\n      \"CreatedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-adc58a26-ed2e-4220-b48b-9d5ba7cb0bd6"
+                },
+                {
+                  "id": "7f598107-995f-4d6c-9b9d-d65076d65510",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/KnowledgeArticle?queryLocator=<string>&pageSize=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "KnowledgeArticle"
+                      ],
+                      "query": [
+                        {
+                          "description": "Locator for paginating through large result sets",
+                          "key": "queryLocator",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of results per page (max 100)",
+                          "key": "pageSize",
+                          "value": "25"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-7f598107-995f-4d6c-9b9d-d65076d65510"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:56.000Z",
+              "updatedAt": "2026-07-28T02:49:56.000Z",
+              "uid": "35240-0815a31f-0288-4e12-aa57-a24de379dd8b"
+            }
+          ],
+          "id": "b190357d-1e1c-4c53-927d-68e96a8caea9",
+          "createdAt": "2026-07-28T02:49:56.000Z",
+          "updatedAt": "2026-07-28T02:49:56.000Z",
+          "uid": "35240-b190357d-1e1c-4c53-927d-68e96a8caea9"
+        },
+        {
+          "name": "KnowledgeArticleVersion",
+          "item": [
+            {
+              "name": "{versionId}",
+              "item": [
+                {
+                  "name": "Update Knowledge Article",
+                  "id": "1ae4bfda-6c5a-4462-85a9-ef730f32ee31",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Title\": \"<string>\",\n  \"Summary\": \"<string>\",\n  \"UrlName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/KnowledgeArticleVersion/:versionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "KnowledgeArticleVersion",
+                        ":versionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "235316c8-7a44-433f-84db-3d977916d8a9",
+                          "key": "versionId",
+                          "value": "<string>",
+                          "description": "(Required) The Salesforce ID of the KnowledgeArticleVersion record"
+                        }
+                      ]
+                    },
+                    "description": "Updates fields on a knowledge article version. Only draft articles can be updated; published articles must be cloned first."
+                  },
+                  "response": [
+                    {
+                      "id": "c8bacdce-9133-40dc-9b41-8d6da1b6521f",
+                      "name": "Article updated successfully",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Title\": \"<string>\",\n  \"Summary\": \"<string>\",\n  \"UrlName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/KnowledgeArticleVersion/:versionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "KnowledgeArticleVersion",
+                            ":versionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "versionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-c8bacdce-9133-40dc-9b41-8d6da1b6521f"
+                    },
+                    {
+                      "id": "edbd17ed-a881-4cd9-8eb8-fcf22846fe0d",
+                      "name": "Invalid request",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Title\": \"<string>\",\n  \"Summary\": \"<string>\",\n  \"UrlName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/KnowledgeArticleVersion/:versionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "KnowledgeArticleVersion",
+                            ":versionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "versionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-edbd17ed-a881-4cd9-8eb8-fcf22846fe0d"
+                    },
+                    {
+                      "id": "545841b9-ecfc-40b0-b127-af0ae5d6fd77",
+                      "name": "Article version not found",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Title\": \"<string>\",\n  \"Summary\": \"<string>\",\n  \"UrlName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/KnowledgeArticleVersion/:versionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "KnowledgeArticleVersion",
+                            ":versionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "versionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-545841b9-ecfc-40b0-b127-af0ae5d6fd77"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-1ae4bfda-6c5a-4462-85a9-ef730f32ee31"
+                },
+                {
+                  "name": "Delete Knowledge Article",
+                  "id": "d6a5f7ec-6875-494b-9d7e-9c5c6e4c2361",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/KnowledgeArticleVersion/:versionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "KnowledgeArticleVersion",
+                        ":versionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4b75ce66-2031-4e4c-b994-cde27e908923",
+                          "key": "versionId",
+                          "value": "<string>",
+                          "description": "(Required) The Salesforce ID of the KnowledgeArticleVersion record"
+                        }
+                      ]
+                    },
+                    "description": "Deletes a knowledge article version. Only draft articles can be deleted. Published articles must be archived before deletion."
+                  },
+                  "response": [
+                    {
+                      "id": "6a8584a2-969f-4728-a694-162af6b8d7a2",
+                      "name": "Article deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/KnowledgeArticleVersion/:versionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "KnowledgeArticleVersion",
+                            ":versionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "versionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-6a8584a2-969f-4728-a694-162af6b8d7a2"
+                    },
+                    {
+                      "id": "a229c7a6-a612-4be8-becc-2263dba998f4",
+                      "name": "Article version not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sobjects/KnowledgeArticleVersion/:versionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sobjects",
+                            "KnowledgeArticleVersion",
+                            ":versionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "versionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-a229c7a6-a612-4be8-becc-2263dba998f4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-d6a5f7ec-6875-494b-9d7e-9c5c6e4c2361"
+                }
+              ],
+              "id": "3a7fbbf8-7063-408d-aa98-f658a038ec64",
+              "createdAt": "2026-07-28T02:49:56.000Z",
+              "updatedAt": "2026-07-28T02:49:56.000Z",
+              "uid": "35240-3a7fbbf8-7063-408d-aa98-f658a038ec64"
+            },
+            {
+              "name": "Create Knowledge Article",
+              "id": "416ff107-6335-4be2-940c-6ab26e930765",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Title\": \"<string>\",\n  \"UrlName\": \"<string>\",\n  \"Summary\": \"<string>\",\n  \"Language\": \"en_US\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sobjects/KnowledgeArticleVersion",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sobjects",
+                    "KnowledgeArticleVersion"
+                  ]
+                },
+                "description": "Creates a new knowledge article draft. The article must be published separately after creation."
+              },
+              "response": [
+                {
+                  "id": "eaaa482d-01c1-411c-8e92-7bc5e3f6e365",
+                  "name": "Knowledge article created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Title\": \"<string>\",\n  \"UrlName\": \"<string>\",\n  \"Summary\": \"<string>\",\n  \"Language\": \"en_US\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/KnowledgeArticleVersion",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "KnowledgeArticleVersion"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"success\": \"<boolean>\",\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-eaaa482d-01c1-411c-8e92-7bc5e3f6e365"
+                },
+                {
+                  "id": "0a081aa3-8975-45ff-a0ad-bb0ec37bd84f",
+                  "name": "Invalid request - validation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Title\": \"<string>\",\n  \"UrlName\": \"<string>\",\n  \"Summary\": \"<string>\",\n  \"Language\": \"en_US\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sobjects/KnowledgeArticleVersion",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sobjects",
+                        "KnowledgeArticleVersion"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-0a081aa3-8975-45ff-a0ad-bb0ec37bd84f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:56.000Z",
+              "updatedAt": "2026-07-28T02:49:56.000Z",
+              "uid": "35240-416ff107-6335-4be2-940c-6ab26e930765"
+            }
+          ],
+          "id": "5907f750-77fe-415e-ab61-696982aa92f2",
+          "createdAt": "2026-07-28T02:49:56.000Z",
+          "updatedAt": "2026-07-28T02:49:56.000Z",
+          "uid": "35240-5907f750-77fe-415e-ab61-696982aa92f2"
+        }
+      ],
+      "id": "2c0add5f-5c7c-4c02-8b9c-1a1cfbc546b4",
+      "createdAt": "2026-07-28T02:49:56.000Z",
+      "updatedAt": "2026-07-28T02:49:56.000Z",
+      "uid": "35240-2c0add5f-5c7c-4c02-8b9c-1a1cfbc546b4"
+    },
+    {
+      "name": "support",
+      "item": [
+        {
+          "name": "knowledgeArticles",
+          "item": [
+            {
+              "name": "{articleId}",
+              "item": [
+                {
+                  "name": "Get Knowledge Article Detail",
+                  "id": "bb298230-b1a4-4aab-aba8-a3d816477d46",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/support/knowledgeArticles/:articleId?channel=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "support",
+                        "knowledgeArticles",
+                        ":articleId"
+                      ],
+                      "query": [
+                        {
+                          "description": "The channel context for the article view",
+                          "key": "channel",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "f1f3f813-2c1e-4eb3-be5e-8e90d2d81bcb",
+                          "key": "articleId",
+                          "value": "<string>",
+                          "description": "(Required) The Salesforce ID of the article"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the full content and metadata for a specific knowledge article, including all article body fields and channel visibility settings."
+                  },
+                  "response": [
+                    {
+                      "id": "3adc85e7-dd84-4cf4-a418-ff2d281238a9",
+                      "name": "Successfully retrieved article detail",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/support/knowledgeArticles/:articleId?channel=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "support",
+                            "knowledgeArticles",
+                            ":articleId"
+                          ],
+                          "query": [
+                            {
+                              "description": "The channel context for the article view",
+                              "key": "channel",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "articleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"urlName\": \"<string>\",\n  \"publishStatus\": \"<string>\",\n  \"language\": \"<string>\",\n  \"lastPublishedDate\": \"<dateTime>\",\n  \"articleBody\": \"<string>\",\n  \"categories\": [\n    {\n      \"groupName\": \"<string>\",\n      \"groupLabel\": \"<string>\",\n      \"selectedCategories\": [\n        {\n          \"name\": \"<string>\",\n          \"label\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"label\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"groupName\": \"<string>\",\n      \"groupLabel\": \"<string>\",\n      \"selectedCategories\": [\n        {\n          \"name\": \"<string>\",\n          \"label\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"label\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-3adc85e7-dd84-4cf4-a418-ff2d281238a9"
+                    },
+                    {
+                      "id": "ec2afae3-3d26-44f3-abe5-5aef3aeead78",
+                      "name": "Article not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/support/knowledgeArticles/:articleId?channel=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "support",
+                            "knowledgeArticles",
+                            ":articleId"
+                          ],
+                          "query": [
+                            {
+                              "description": "The channel context for the article view",
+                              "key": "channel",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "articleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-ec2afae3-3d26-44f3-abe5-5aef3aeead78"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-bb298230-b1a4-4aab-aba8-a3d816477d46"
+                }
+              ],
+              "id": "9a9c33b3-7890-47ad-b9b7-000b45c4ecff",
+              "createdAt": "2026-07-28T02:49:56.000Z",
+              "updatedAt": "2026-07-28T02:49:56.000Z",
+              "uid": "35240-9a9c33b3-7890-47ad-b9b7-000b45c4ecff"
+            },
+            {
+              "name": "Search Knowledge Articles",
+              "id": "658dbd27-8d76-4268-b772-7882fca0aa6f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/support/knowledgeArticles?channel=App&categories=<string>&queryMethod=BELOW&sort=ViewScore&order=DESC&pageSize=25&pageNumber=1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "support",
+                    "knowledgeArticles"
+                  ],
+                  "query": [
+                    {
+                      "description": "The channel to filter articles by",
+                      "key": "channel",
+                      "value": "App"
+                    },
+                    {
+                      "description": "Map of category group to category value for filtering",
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Method used to query the articles",
+                      "key": "queryMethod",
+                      "value": "BELOW"
+                    },
+                    {
+                      "description": "Sort field for results",
+                      "key": "sort",
+                      "value": "ViewScore"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "description": "Number of articles per page",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve",
+                      "key": "pageNumber",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "description": "Searches and retrieves knowledge articles visible to the specified channel (internal, public site, or community). Supports keyword search, filtering by article type, and category filters."
+              },
+              "response": [
+                {
+                  "id": "134886f9-d4b0-41d9-835f-2b59ee044f8a",
+                  "name": "Successfully retrieved knowledge articles",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/support/knowledgeArticles?channel=App&categories=<string>&queryMethod=BELOW&sort=ViewScore&order=DESC&pageSize=25&pageNumber=1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "support",
+                        "knowledgeArticles"
+                      ],
+                      "query": [
+                        {
+                          "description": "The channel to filter articles by",
+                          "key": "channel",
+                          "value": "App"
+                        },
+                        {
+                          "description": "Map of category group to category value for filtering",
+                          "key": "categories",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Method used to query the articles",
+                          "key": "queryMethod",
+                          "value": "BELOW"
+                        },
+                        {
+                          "description": "Sort field for results",
+                          "key": "sort",
+                          "value": "ViewScore"
+                        },
+                        {
+                          "description": "Sort order",
+                          "key": "order",
+                          "value": "DESC"
+                        },
+                        {
+                          "description": "Number of articles per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Page number to retrieve",
+                          "key": "pageNumber",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"currentPageUrl\": \"<string>\",\n  \"nextPageUrl\": \"<string>\",\n  \"articles\": [\n    {\n      \"Id\": \"<string>\",\n      \"KnowledgeArticleId\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"UrlName\": \"<string>\",\n      \"PublishStatus\": \"Online\",\n      \"Language\": \"<string>\",\n      \"VersionNumber\": \"<integer>\",\n      \"LastPublishedDate\": \"<dateTime>\",\n      \"CreatedDate\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"KnowledgeArticleId\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"UrlName\": \"<string>\",\n      \"PublishStatus\": \"Draft\",\n      \"Language\": \"<string>\",\n      \"VersionNumber\": \"<integer>\",\n      \"LastPublishedDate\": \"<dateTime>\",\n      \"CreatedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-134886f9-d4b0-41d9-835f-2b59ee044f8a"
+                },
+                {
+                  "id": "c0e0e879-25a2-41f0-8ff4-21e71d094013",
+                  "name": "Invalid query parameters",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/support/knowledgeArticles?channel=App&categories=<string>&queryMethod=BELOW&sort=ViewScore&order=DESC&pageSize=25&pageNumber=1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "support",
+                        "knowledgeArticles"
+                      ],
+                      "query": [
+                        {
+                          "description": "The channel to filter articles by",
+                          "key": "channel",
+                          "value": "App"
+                        },
+                        {
+                          "description": "Map of category group to category value for filtering",
+                          "key": "categories",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Method used to query the articles",
+                          "key": "queryMethod",
+                          "value": "BELOW"
+                        },
+                        {
+                          "description": "Sort field for results",
+                          "key": "sort",
+                          "value": "ViewScore"
+                        },
+                        {
+                          "description": "Sort order",
+                          "key": "order",
+                          "value": "DESC"
+                        },
+                        {
+                          "description": "Number of articles per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Page number to retrieve",
+                          "key": "pageNumber",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-c0e0e879-25a2-41f0-8ff4-21e71d094013"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:56.000Z",
+              "updatedAt": "2026-07-28T02:49:56.000Z",
+              "uid": "35240-658dbd27-8d76-4268-b772-7882fca0aa6f"
+            }
+          ],
+          "id": "5468505b-5fe0-4533-acb4-c5a5fb5d494d",
+          "createdAt": "2026-07-28T02:49:56.000Z",
+          "updatedAt": "2026-07-28T02:49:56.000Z",
+          "uid": "35240-5468505b-5fe0-4533-acb4-c5a5fb5d494d"
+        }
+      ],
+      "id": "8a44382b-f1fa-4515-a322-f9373acb6c8a",
+      "createdAt": "2026-07-28T02:49:56.000Z",
+      "updatedAt": "2026-07-28T02:49:56.000Z",
+      "uid": "35240-8a44382b-f1fa-4515-a322-f9373acb6c8a"
+    },
+    {
+      "name": "actions",
+      "item": [
+        {
+          "name": "standard",
+          "item": [
+            {
+              "name": "publishKnowledgeArticles",
+              "item": [
+                {
+                  "name": "Publish Knowledge Articles",
+                  "id": "366a85cc-3998-4290-bf8a-b4266b46affa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"inputs\": [\n    {\n      \"knowledgeArticleVersionId\": \"<string>\"\n    },\n    {\n      \"knowledgeArticleVersionId\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/standard/publishKnowledgeArticles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        "standard",
+                        "publishKnowledgeArticles"
+                      ]
+                    },
+                    "description": "Publishes one or more knowledge article versions, making them visible to the configured channels."
+                  },
+                  "response": [
+                    {
+                      "id": "7c170c91-0286-466d-90ad-f6b86c84f1c6",
+                      "name": "Articles published successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"knowledgeArticleVersionId\": \"<string>\"\n    },\n    {\n      \"knowledgeArticleVersionId\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/standard/publishKnowledgeArticles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "standard",
+                            "publishKnowledgeArticles"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"outputValues\": {},\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-7c170c91-0286-466d-90ad-f6b86c84f1c6"
+                    },
+                    {
+                      "id": "348eed79-69bc-4d49-9ff7-52e929135d52",
+                      "name": "Publish failed - validation errors",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"knowledgeArticleVersionId\": \"<string>\"\n    },\n    {\n      \"knowledgeArticleVersionId\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/standard/publishKnowledgeArticles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "standard",
+                            "publishKnowledgeArticles"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:49:56.000Z",
+                      "updatedAt": "2026-07-28T02:49:56.000Z",
+                      "uid": "35240-348eed79-69bc-4d49-9ff7-52e929135d52"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:49:56.000Z",
+                  "updatedAt": "2026-07-28T02:49:56.000Z",
+                  "uid": "35240-366a85cc-3998-4290-bf8a-b4266b46affa"
+                }
+              ],
+              "id": "4eb16f15-52e6-4d06-8212-3743b9f163c4",
+              "createdAt": "2026-07-28T02:49:56.000Z",
+              "updatedAt": "2026-07-28T02:49:56.000Z",
+              "uid": "35240-4eb16f15-52e6-4d06-8212-3743b9f163c4"
+            }
+          ],
+          "id": "8170de5f-d46d-49f6-8eea-e1f69b00d19b",
+          "createdAt": "2026-07-28T02:49:56.000Z",
+          "updatedAt": "2026-07-28T02:49:56.000Z",
+          "uid": "35240-8170de5f-d46d-49f6-8eea-e1f69b00d19b"
+        }
+      ],
+      "id": "e619c2a6-eeec-4406-aef8-4cd5092b5ed3",
+      "createdAt": "2026-07-28T02:49:56.000Z",
+      "updatedAt": "2026-07-28T02:49:56.000Z",
+      "uid": "35240-e619c2a6-eeec-4406-aef8-4cd5092b5ed3"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api full",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0"
+    }
+  ]
+}

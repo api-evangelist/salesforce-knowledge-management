@@ -1,0 +1,266 @@
+{
+  "info": {
+    "_postman_id": "25a8f090-c57f-4857-9b17-9f06dadff80d",
+    "name": "Salesforce Knowledge Management REST Articles Categories API",
+    "description": "REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:56.000Z",
+    "updatedAt": "2026-07-28T02:49:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-25a8f090-c57f-4857-9b17-9f06dadff80d"
+  },
+  "item": [
+    {
+      "name": "support",
+      "item": [
+        {
+          "name": "dataCategoryGroups",
+          "item": [
+            {
+              "name": "{group}",
+              "item": [
+                {
+                  "name": "dataCategories",
+                  "item": [
+                    {
+                      "name": "List Data Categories",
+                      "id": "6702b47b-de60-4ad6-a224-e51e334d37d6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/support/dataCategoryGroups/:group/dataCategories",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "support",
+                            "dataCategoryGroups",
+                            ":group",
+                            "dataCategories"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9fd896c6-91fb-471e-b3eb-723f7bebd7c0",
+                              "key": "group",
+                              "value": "<string>",
+                              "description": "(Required) The data category group API name"
+                            }
+                          ]
+                        },
+                        "description": "Returns the categories within a specific data category group, including the category hierarchy."
+                      },
+                      "response": [
+                        {
+                          "id": "a9676918-d135-409e-8644-4be2b0485795",
+                          "name": "Successfully retrieved data categories",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/support/dataCategoryGroups/:group/dataCategories",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "support",
+                                "dataCategoryGroups",
+                                ":group",
+                                "dataCategories"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"categories\": [\n    {\n      \"label\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:49:57.000Z",
+                          "updatedAt": "2026-07-28T02:49:57.000Z",
+                          "uid": "35240-a9676918-d135-409e-8644-4be2b0485795"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:49:57.000Z",
+                      "updatedAt": "2026-07-28T02:49:57.000Z",
+                      "uid": "35240-6702b47b-de60-4ad6-a224-e51e334d37d6"
+                    }
+                  ],
+                  "id": "dc6aa43d-7ad1-452d-9f57-070c22fa0b40",
+                  "createdAt": "2026-07-28T02:49:57.000Z",
+                  "updatedAt": "2026-07-28T02:49:57.000Z",
+                  "uid": "35240-dc6aa43d-7ad1-452d-9f57-070c22fa0b40"
+                }
+              ],
+              "id": "306854eb-4c28-4a36-8d26-3524f52a183e",
+              "createdAt": "2026-07-28T02:49:57.000Z",
+              "updatedAt": "2026-07-28T02:49:57.000Z",
+              "uid": "35240-306854eb-4c28-4a36-8d26-3524f52a183e"
+            },
+            {
+              "name": "List Data Category Groups",
+              "id": "1ea28741-c5fc-433e-9ab4-7c2c953bc092",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/support/dataCategoryGroups?sObjectName=KnowledgeArticle",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "support",
+                    "dataCategoryGroups"
+                  ],
+                  "query": [
+                    {
+                      "description": "The SObject type to filter categories for",
+                      "key": "sObjectName",
+                      "value": "KnowledgeArticle"
+                    }
+                  ]
+                },
+                "description": "Returns a list of data category groups available for categorizing knowledge articles."
+              },
+              "response": [
+                {
+                  "id": "1f891e5c-6529-41d8-9b9e-8d7558b8f702",
+                  "name": "Successfully retrieved data category groups",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/support/dataCategoryGroups?sObjectName=KnowledgeArticle",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "support",
+                        "dataCategoryGroups"
+                      ],
+                      "query": [
+                        {
+                          "description": "The SObject type to filter categories for",
+                          "key": "sObjectName",
+                          "value": "KnowledgeArticle"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"categoryGroups\": [\n    {\n      \"label\": \"<string>\",\n      \"name\": \"<string>\",\n      \"objectUsage\": \"<string>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"name\": \"<string>\",\n      \"objectUsage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:49:57.000Z",
+                  "updatedAt": "2026-07-28T02:49:57.000Z",
+                  "uid": "35240-1f891e5c-6529-41d8-9b9e-8d7558b8f702"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:57.000Z",
+              "updatedAt": "2026-07-28T02:49:57.000Z",
+              "uid": "35240-1ea28741-c5fc-433e-9ab4-7c2c953bc092"
+            }
+          ],
+          "id": "02bf5cf0-a0f5-425e-ac16-9039a908aed7",
+          "createdAt": "2026-07-28T02:49:57.000Z",
+          "updatedAt": "2026-07-28T02:49:57.000Z",
+          "uid": "35240-02bf5cf0-a0f5-425e-ac16-9039a908aed7"
+        }
+      ],
+      "id": "9278db71-976b-44cd-aec7-70c9aacfe2d0",
+      "createdAt": "2026-07-28T02:49:57.000Z",
+      "updatedAt": "2026-07-28T02:49:57.000Z",
+      "uid": "35240-9278db71-976b-44cd-aec7-70c9aacfe2d0"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api full",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0"
+    }
+  ]
+}

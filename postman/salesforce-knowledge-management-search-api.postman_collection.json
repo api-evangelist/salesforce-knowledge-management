@@ -1,0 +1,287 @@
+{
+  "info": {
+    "_postman_id": "4fc0fe7d-2853-4097-b159-b9495aef4cb8",
+    "name": "Salesforce Knowledge Management REST Articles Search API",
+    "description": "REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:49:57.000Z",
+    "updatedAt": "2026-07-28T02:49:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4fc0fe7d-2853-4097-b159-b9495aef4cb8"
+  },
+  "item": [
+    {
+      "name": "support",
+      "item": [
+        {
+          "name": "knowledgeArticles",
+          "item": [
+            {
+              "name": "Search Knowledge Articles",
+              "id": "79c27b8f-9720-41a9-ade8-c778da079df1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/support/knowledgeArticles?channel=App&categories=<string>&queryMethod=BELOW&sort=Title&order=ASC&pageSize=25&pageNumber=1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "support",
+                    "knowledgeArticles"
+                  ],
+                  "query": [
+                    {
+                      "description": "The channel to filter articles by",
+                      "key": "channel",
+                      "value": "App"
+                    },
+                    {
+                      "description": "Map of category group to category value for filtering",
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Method used to query the articles",
+                      "key": "queryMethod",
+                      "value": "BELOW"
+                    },
+                    {
+                      "description": "Sort field for results",
+                      "key": "sort",
+                      "value": "Title"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "order",
+                      "value": "ASC"
+                    },
+                    {
+                      "description": "Number of articles per page",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve",
+                      "key": "pageNumber",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "description": "Searches and retrieves knowledge articles visible to the specified channel (internal, public site, or community). Supports keyword search, filtering by article type, and category filters."
+              },
+              "response": [
+                {
+                  "id": "4b5ce3da-209d-439d-b66e-6654c5d4c783",
+                  "name": "Successfully retrieved knowledge articles",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/support/knowledgeArticles?channel=App&categories=<string>&queryMethod=BELOW&sort=Title&order=ASC&pageSize=25&pageNumber=1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "support",
+                        "knowledgeArticles"
+                      ],
+                      "query": [
+                        {
+                          "description": "The channel to filter articles by",
+                          "key": "channel",
+                          "value": "App"
+                        },
+                        {
+                          "description": "Map of category group to category value for filtering",
+                          "key": "categories",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Method used to query the articles",
+                          "key": "queryMethod",
+                          "value": "BELOW"
+                        },
+                        {
+                          "description": "Sort field for results",
+                          "key": "sort",
+                          "value": "Title"
+                        },
+                        {
+                          "description": "Sort order",
+                          "key": "order",
+                          "value": "ASC"
+                        },
+                        {
+                          "description": "Number of articles per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Page number to retrieve",
+                          "key": "pageNumber",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"currentPageUrl\": \"<string>\",\n  \"nextPageUrl\": \"<string>\",\n  \"articles\": [\n    {\n      \"Id\": \"<string>\",\n      \"KnowledgeArticleId\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"UrlName\": \"<string>\",\n      \"PublishStatus\": \"Archived\",\n      \"Language\": \"<string>\",\n      \"VersionNumber\": \"<integer>\",\n      \"LastPublishedDate\": \"<dateTime>\",\n      \"CreatedDate\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"KnowledgeArticleId\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"UrlName\": \"<string>\",\n      \"PublishStatus\": \"Online\",\n      \"Language\": \"<string>\",\n      \"VersionNumber\": \"<integer>\",\n      \"LastPublishedDate\": \"<dateTime>\",\n      \"CreatedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:49:58.000Z",
+                  "updatedAt": "2026-07-28T02:49:58.000Z",
+                  "uid": "35240-4b5ce3da-209d-439d-b66e-6654c5d4c783"
+                },
+                {
+                  "id": "b9e3af20-9c8f-4dcc-a828-186b00283491",
+                  "name": "Invalid query parameters",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/support/knowledgeArticles?channel=App&categories=<string>&queryMethod=BELOW&sort=Title&order=ASC&pageSize=25&pageNumber=1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "support",
+                        "knowledgeArticles"
+                      ],
+                      "query": [
+                        {
+                          "description": "The channel to filter articles by",
+                          "key": "channel",
+                          "value": "App"
+                        },
+                        {
+                          "description": "Map of category group to category value for filtering",
+                          "key": "categories",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Method used to query the articles",
+                          "key": "queryMethod",
+                          "value": "BELOW"
+                        },
+                        {
+                          "description": "Sort field for results",
+                          "key": "sort",
+                          "value": "Title"
+                        },
+                        {
+                          "description": "Sort order",
+                          "key": "order",
+                          "value": "ASC"
+                        },
+                        {
+                          "description": "Number of articles per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Page number to retrieve",
+                          "key": "pageNumber",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:49:58.000Z",
+                  "updatedAt": "2026-07-28T02:49:58.000Z",
+                  "uid": "35240-b9e3af20-9c8f-4dcc-a828-186b00283491"
+                }
+              ],
+              "createdAt": "2026-07-28T02:49:58.000Z",
+              "updatedAt": "2026-07-28T02:49:58.000Z",
+              "uid": "35240-79c27b8f-9720-41a9-ade8-c778da079df1"
+            }
+          ],
+          "id": "4dc3fdd6-d7f5-4be0-ba34-5f9568027747",
+          "createdAt": "2026-07-28T02:49:58.000Z",
+          "updatedAt": "2026-07-28T02:49:58.000Z",
+          "uid": "35240-4dc3fdd6-d7f5-4be0-ba34-5f9568027747"
+        }
+      ],
+      "id": "a4c583cf-cfc4-4965-b6c2-370f7f4b79db",
+      "createdAt": "2026-07-28T02:49:58.000Z",
+      "updatedAt": "2026-07-28T02:49:58.000Z",
+      "uid": "35240-a4c583cf-cfc4-4965-b6c2-370f7f4b79db"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api full",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0"
+    }
+  ]
+}

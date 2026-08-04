@@ -1,0 +1,20 @@
+{
+  "provider": "salesforce-knowledge-management",
+  "sources": [
+    "salesforce-knowledge-management-articles-api-openapi.yml",
+    "salesforce-knowledge-management-categories-api-openapi.yml",
+    "salesforce-knowledge-management-search-api-openapi.yml",
+    "salesforce-knowledge-management-suggestions-api-openapi.yml"
+  ],
+  "outputs": [
+    "salesforce-knowledge-management-articles-api-openapi.yml",
+    "salesforce-knowledge-management-categories-api-openapi.yml",
+    "salesforce-knowledge-management-search-api-openapi.yml",
+    "salesforce-knowledge-management-suggestions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
