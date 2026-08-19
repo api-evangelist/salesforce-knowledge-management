@@ -1,0 +1,198 @@
+{
+  "item": [
+    {
+      "id": "45be6d5b-87e0-4bb9-ac51-3c9d701e62d9",
+      "name": "Suggestions",
+      "description": {
+        "content": "Article suggestion operations for cases and communities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47e7deee-4532-49d4-b82c-00644df7abfc",
+          "name": "Get Suggested Articles",
+          "request": {
+            "name": "Get Suggested Articles",
+            "description": {
+              "content": "Returns knowledge article suggestions based on case subject, description, or a search query. Used to surface relevant articles during case creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support",
+                "suggestedArticles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "channel",
+                  "value": "<string>",
+                  "description": "The channel for the suggested articles"
+                },
+                {
+                  "disabled": false,
+                  "key": "subject",
+                  "value": "<string>",
+                  "description": "Case subject text used for article suggestion"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>",
+                  "description": "Case description text used for article suggestion"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "5",
+                  "description": "Maximum number of suggestions to return"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec207ec6-758a-4801-8618-003593a10282",
+              "name": "Successfully retrieved article suggestions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support",
+                    "suggestedArticles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"suggestedArticles\": [\n    {\n      \"Id\": \"string\",\n      \"KnowledgeArticleId\": \"string\",\n      \"Title\": \"string\",\n      \"UrlName\": \"string\",\n      \"PublishStatus\": \"Draft\",\n      \"Language\": \"string\",\n      \"VersionNumber\": 7516,\n      \"LastPublishedDate\": \"1973-03-04T21:47:36.610Z\",\n      \"CreatedDate\": \"1974-12-12T02:26:09.997Z\"\n    },\n    {\n      \"Id\": \"string\",\n      \"KnowledgeArticleId\": \"string\",\n      \"Title\": \"string\",\n      \"UrlName\": \"string\",\n      \"PublishStatus\": \"Draft\",\n      \"Language\": \"string\",\n      \"VersionNumber\": 700,\n      \"LastPublishedDate\": \"1954-03-23T16:18:12.826Z\",\n      \"CreatedDate\": \"1952-05-23T06:00:52.292Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api full"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a774c3cf-cac4-491d-b549-c0ed38077b9c",
+    "name": "Salesforce Knowledge Management REST Articles Suggestions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.\n\nContact Support:\n Name: Salesforce Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

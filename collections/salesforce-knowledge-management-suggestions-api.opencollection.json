@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Knowledge Management REST Articles Suggestions API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Suggestions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Suggested Articles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/support/suggestedArticles",
+            "params": [
+              {
+                "name": "channel",
+                "value": "",
+                "type": "query",
+                "description": "The channel for the suggested articles"
+              },
+              {
+                "name": "subject",
+                "value": "",
+                "type": "query",
+                "description": "Case subject text used for article suggestion"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Case description text used for article suggestion"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of suggestions to return"
+              }
+            ]
+          },
+          "docs": "Returns knowledge article suggestions based on case subject, description, or a search query. Used to surface relevant articles during case creation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

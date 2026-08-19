@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Knowledge Management REST Articles Search API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Knowledge Articles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/support/knowledgeArticles",
+            "params": [
+              {
+                "name": "channel",
+                "value": "",
+                "type": "query",
+                "description": "The channel to filter articles by"
+              },
+              {
+                "name": "categories",
+                "value": "",
+                "type": "query",
+                "description": "Map of category group to category value for filtering"
+              },
+              {
+                "name": "queryMethod",
+                "value": "",
+                "type": "query",
+                "description": "Method used to query the articles"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field for results"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of articles per page"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve"
+              }
+            ]
+          },
+          "docs": "Searches and retrieves knowledge articles visible to the specified channel (internal, public site, or community). Supports keyword search, filtering by article type, and category filters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

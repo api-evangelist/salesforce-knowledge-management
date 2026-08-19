@@ -1,0 +1,304 @@
+{
+  "item": [
+    {
+      "id": "7b5fedcc-9701-4601-aeb5-662dbf3d5ab7",
+      "name": "Search",
+      "description": {
+        "content": "Knowledge article search operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2d6383c8-8885-408e-b4c9-18a8a4d953e0",
+          "name": "Search Knowledge Articles",
+          "request": {
+            "name": "Search Knowledge Articles",
+            "description": {
+              "content": "Searches and retrieves knowledge articles visible to the specified channel (internal, public site, or community). Supports keyword search, filtering by article type, and category filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support",
+                "knowledgeArticles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "channel",
+                  "value": "App",
+                  "description": "The channel to filter articles by"
+                },
+                {
+                  "disabled": false,
+                  "key": "categories",
+                  "value": "<string>",
+                  "description": "Map of category group to category value for filtering"
+                },
+                {
+                  "disabled": false,
+                  "key": "queryMethod",
+                  "value": "<string>",
+                  "description": "Method used to query the articles"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field for results"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25",
+                  "description": "Number of articles per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "1",
+                  "description": "Page number to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance identifier",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "177648cc-a017-4731-9874-6c57cdca3180",
+              "name": "Successfully retrieved knowledge articles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support",
+                    "knowledgeArticles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "channel",
+                      "value": "App"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "queryMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentPageUrl\": \"string\",\n  \"nextPageUrl\": \"string\",\n  \"articles\": [\n    {\n      \"Id\": \"string\",\n      \"KnowledgeArticleId\": \"string\",\n      \"Title\": \"string\",\n      \"UrlName\": \"string\",\n      \"PublishStatus\": \"Draft\",\n      \"Language\": \"string\",\n      \"VersionNumber\": 7342,\n      \"LastPublishedDate\": \"1988-12-14T00:29:29.628Z\",\n      \"CreatedDate\": \"1965-11-26T03:42:14.066Z\"\n    },\n    {\n      \"Id\": \"string\",\n      \"KnowledgeArticleId\": \"string\",\n      \"Title\": \"string\",\n      \"UrlName\": \"string\",\n      \"PublishStatus\": \"Draft\",\n      \"Language\": \"string\",\n      \"VersionNumber\": 5547,\n      \"LastPublishedDate\": \"2025-08-29T08:20:35.196Z\",\n      \"CreatedDate\": \"1985-10-13T18:58:54.432Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4da55b0-a936-498d-b878-e9774f7e9ad3",
+              "name": "Invalid query parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support",
+                    "knowledgeArticles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "channel",
+                      "value": "App"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "queryMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance identifier",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api full"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "74958ce1-f95f-4382-9966-b74950af6a94",
+    "name": "Salesforce Knowledge Management REST Articles Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.\n\nContact Support:\n Name: Salesforce Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

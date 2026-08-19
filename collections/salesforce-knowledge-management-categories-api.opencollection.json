@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Knowledge Management REST Articles Categories API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Data Category Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/support/dataCategoryGroups",
+            "params": [
+              {
+                "name": "sObjectName",
+                "value": "",
+                "type": "query",
+                "description": "The SObject type to filter categories for"
+              }
+            ]
+          },
+          "docs": "Returns a list of data category groups available for categorizing knowledge articles."
+        },
+        {
+          "info": {
+            "name": "List Data Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/support/dataCategoryGroups/:group/dataCategories",
+            "params": [
+              {
+                "name": "group",
+                "value": "",
+                "type": "path",
+                "description": "The data category group API name"
+              }
+            ]
+          },
+          "docs": "Returns the categories within a specific data category group, including the category hierarchy."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
