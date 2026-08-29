@@ -3,6 +3,18 @@ description: >-
   API for managing knowledge articles, categories, and data in Salesforce Knowledge. Enables creating, reading,
   updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios
   across multiple channels including internal app, public knowledge base, and customer portals.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
