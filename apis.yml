@@ -131,6 +131,8 @@ apis:
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
 common:
+  - type: Website
+    url: https://www.salesforce.com/
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/salesforce-knowledge-management/overview
   - type: AgenticAccess
