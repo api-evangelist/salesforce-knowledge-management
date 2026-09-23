@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Knowledge Management REST Articles Suggestions API
+  title: Salesforce Knowledge Management REST Suggestions API
   description: REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.
   version: 59.0.0
   termsOfService: https://www.salesforce.com/company/legal/agreements/
@@ -66,13 +66,6 @@ paths:
                 $ref: '#/components/schemas/SuggestedArticlesResponse'
 components:
   schemas:
-    SuggestedArticlesResponse:
-      type: object
-      properties:
-        suggestedArticles:
-          type: array
-          items:
-            $ref: '#/components/schemas/KnowledgeArticleSummary'
     KnowledgeArticleSummary:
       type: object
       properties:
@@ -100,6 +93,13 @@ components:
         CreatedDate:
           type: string
           format: date-time
+    SuggestedArticlesResponse:
+      type: object
+      properties:
+        suggestedArticles:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeArticleSummary'
   securitySchemes:
     oauth2:
       type: oauth2

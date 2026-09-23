@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Salesforce Knowledge Management REST Articles API
   description: REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.
@@ -279,44 +279,6 @@ paths:
           description: Publish failed - validation errors
 components:
   schemas:
-    CreateResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        success:
-          type: boolean
-        errors:
-          type: array
-          items:
-            type: string
-    PublishArticlesResponse:
-      type: object
-      properties:
-        outputValues:
-          type: object
-        errors:
-          type: array
-          items:
-            type: string
-    KnowledgeArticleInput:
-      type: object
-      required:
-      - Title
-      properties:
-        Title:
-          type: string
-          description: Article title
-        UrlName:
-          type: string
-          description: URL-friendly slug for the article
-        Summary:
-          type: string
-          description: Short summary of the article content
-        Language:
-          type: string
-          description: Article language code (e.g., en_US)
-          default: en_US
     KnowledgeArticleUpdateInput:
       type: object
       properties:
@@ -337,17 +299,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/KnowledgeArticleSummary'
-    PublishArticlesInput:
-      type: object
-      properties:
-        inputs:
-          type: array
-          items:
-            type: object
-            properties:
-              knowledgeArticleVersionId:
-                type: string
-                description: ID of the article version to publish
     KnowledgeArticle:
       type: object
       properties:
@@ -376,6 +327,44 @@ components:
         LastModifiedDate:
           type: string
           format: date-time
+    KnowledgeArticleSummary:
+      type: object
+      properties:
+        Id:
+          type: string
+        KnowledgeArticleId:
+          type: string
+        Title:
+          type: string
+        UrlName:
+          type: string
+        PublishStatus:
+          type: string
+          enum:
+          - Online
+          - Draft
+          - Archived
+        Language:
+          type: string
+        VersionNumber:
+          type: integer
+        LastPublishedDate:
+          type: string
+          format: date-time
+        CreatedDate:
+          type: string
+          format: date-time
+    CreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        success:
+          type: boolean
+        errors:
+          type: array
+          items:
+            type: string
     KnowledgeArticleListResponse:
       type: object
       properties:
@@ -428,33 +417,44 @@ components:
                       type: string
                     label:
                       type: string
-    KnowledgeArticleSummary:
+    PublishArticlesResponse:
       type: object
       properties:
-        Id:
-          type: string
-        KnowledgeArticleId:
-          type: string
+        outputValues:
+          type: object
+        errors:
+          type: array
+          items:
+            type: string
+    KnowledgeArticleInput:
+      type: object
+      required:
+      - Title
+      properties:
         Title:
           type: string
+          description: Article title
         UrlName:
           type: string
-        PublishStatus:
+          description: URL-friendly slug for the article
+        Summary:
           type: string
-          enum:
-          - Online
-          - Draft
-          - Archived
+          description: Short summary of the article content
         Language:
           type: string
-        VersionNumber:
-          type: integer
-        LastPublishedDate:
-          type: string
-          format: date-time
-        CreatedDate:
-          type: string
-          format: date-time
+          description: Article language code (e.g., en_US)
+          default: en_US
+    PublishArticlesInput:
+      type: object
+      properties:
+        inputs:
+          type: array
+          items:
+            type: object
+            properties:
+              knowledgeArticleVersionId:
+                type: string
+                description: ID of the article version to publish
   securitySchemes:
     oauth2:
       type: oauth2

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Knowledge Management REST Articles Categories API
+  title: Salesforce Knowledge Management REST Categories API
   description: REST API for accessing and managing Salesforce Knowledge articles, categories, and knowledge base content. Enables creating, reading, updating, publishing, and archiving knowledge articles for customer self-service and agent-assisted support scenarios.
   version: 59.0.0
   termsOfService: https://www.salesforce.com/company/legal/agreements/
@@ -69,6 +69,20 @@ paths:
                 $ref: '#/components/schemas/DataCategoryList'
 components:
   schemas:
+    DataCategoryGroupList:
+      type: object
+      properties:
+        categoryGroups:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              name:
+                type: string
+              objectUsage:
+                type: string
     DataCategoryList:
       type: object
       properties:
@@ -85,20 +99,6 @@ components:
                 type: array
                 items:
                   type: object
-    DataCategoryGroupList:
-      type: object
-      properties:
-        categoryGroups:
-          type: array
-          items:
-            type: object
-            properties:
-              label:
-                type: string
-              name:
-                type: string
-              objectUsage:
-                type: string
   securitySchemes:
     oauth2:
       type: oauth2

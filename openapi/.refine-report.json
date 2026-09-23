@@ -1,10 +1,7 @@
 {
   "provider": "salesforce-knowledge-management",
   "sources": [
-    "salesforce-knowledge-management-articles-api-openapi.yml",
-    "salesforce-knowledge-management-categories-api-openapi.yml",
-    "salesforce-knowledge-management-search-api-openapi.yml",
-    "salesforce-knowledge-management-suggestions-api-openapi.yml"
+    "_original/salesforce-knowledge-management-rest-api-openapi.yml"
   ],
   "outputs": [
     "salesforce-knowledge-management-articles-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "salesforce-knowledge-management-rest-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "salesforce-knowledge-management-articles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "salesforce-knowledge-management-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "salesforce-knowledge-management-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "salesforce-knowledge-management-suggestions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
