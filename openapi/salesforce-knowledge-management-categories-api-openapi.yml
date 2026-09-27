@@ -69,20 +69,6 @@ paths:
                 $ref: '#/components/schemas/DataCategoryList'
 components:
   schemas:
-    DataCategoryGroupList:
-      type: object
-      properties:
-        categoryGroups:
-          type: array
-          items:
-            type: object
-            properties:
-              label:
-                type: string
-              name:
-                type: string
-              objectUsage:
-                type: string
     DataCategoryList:
       type: object
       properties:
@@ -99,6 +85,20 @@ components:
                 type: array
                 items:
                   type: object
+    DataCategoryGroupList:
+      type: object
+      properties:
+        categoryGroups:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              name:
+                type: string
+              objectUsage:
+                type: string
   securitySchemes:
     oauth2:
       type: oauth2

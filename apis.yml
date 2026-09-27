@@ -38,7 +38,7 @@ tags:
   - CRM
   - Customer Service
   - Documentation
-  - Knowledge-Management
+  - Knowledge Management
   - Support
 tags_raw:
   - Articles
@@ -47,6 +47,7 @@ tags_raw:
   - Documentation
   - Knowledge Management
   - Support
+  - Knowledge-Management
 apis:
 - name: Salesforce Knowledge SOAP API
   description: SOAP API for managing knowledge articles with enterprise integration.

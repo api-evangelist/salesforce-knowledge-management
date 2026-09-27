@@ -107,17 +107,6 @@ paths:
           description: Invalid query parameters
 components:
   schemas:
-    KnowledgeArticleSearchResponse:
-      type: object
-      properties:
-        currentPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-        articles:
-          type: array
-          items:
-            $ref: '#/components/schemas/KnowledgeArticleSummary'
     KnowledgeArticleSummary:
       type: object
       properties:
@@ -145,6 +134,17 @@ components:
         CreatedDate:
           type: string
           format: date-time
+    KnowledgeArticleSearchResponse:
+      type: object
+      properties:
+        currentPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeArticleSummary'
   securitySchemes:
     oauth2:
       type: oauth2

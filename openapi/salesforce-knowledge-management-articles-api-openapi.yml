@@ -279,26 +279,6 @@ paths:
           description: Publish failed - validation errors
 components:
   schemas:
-    KnowledgeArticleUpdateInput:
-      type: object
-      properties:
-        Title:
-          type: string
-        Summary:
-          type: string
-        UrlName:
-          type: string
-    KnowledgeArticleSearchResponse:
-      type: object
-      properties:
-        currentPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-        articles:
-          type: array
-          items:
-            $ref: '#/components/schemas/KnowledgeArticleSummary'
     KnowledgeArticle:
       type: object
       properties:
@@ -327,57 +307,24 @@ components:
         LastModifiedDate:
           type: string
           format: date-time
-    KnowledgeArticleSummary:
+    KnowledgeArticleInput:
       type: object
+      required:
+      - Title
       properties:
-        Id:
-          type: string
-        KnowledgeArticleId:
-          type: string
         Title:
           type: string
+          description: Article title
         UrlName:
           type: string
-        PublishStatus:
+          description: URL-friendly slug for the article
+        Summary:
           type: string
-          enum:
-          - Online
-          - Draft
-          - Archived
+          description: Short summary of the article content
         Language:
           type: string
-        VersionNumber:
-          type: integer
-        LastPublishedDate:
-          type: string
-          format: date-time
-        CreatedDate:
-          type: string
-          format: date-time
-    CreateResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        success:
-          type: boolean
-        errors:
-          type: array
-          items:
-            type: string
-    KnowledgeArticleListResponse:
-      type: object
-      properties:
-        totalSize:
-          type: integer
-        done:
-          type: boolean
-        nextRecordsUrl:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/KnowledgeArticleSummary'
+          description: Article language code (e.g., en_US)
+          default: en_US
     KnowledgeArticleDetail:
       type: object
       properties:
@@ -426,24 +373,77 @@ components:
           type: array
           items:
             type: string
-    KnowledgeArticleInput:
+    KnowledgeArticleUpdateInput:
       type: object
-      required:
-      - Title
       properties:
         Title:
           type: string
-          description: Article title
-        UrlName:
-          type: string
-          description: URL-friendly slug for the article
         Summary:
           type: string
-          description: Short summary of the article content
+        UrlName:
+          type: string
+    KnowledgeArticleSummary:
+      type: object
+      properties:
+        Id:
+          type: string
+        KnowledgeArticleId:
+          type: string
+        Title:
+          type: string
+        UrlName:
+          type: string
+        PublishStatus:
+          type: string
+          enum:
+          - Online
+          - Draft
+          - Archived
         Language:
           type: string
-          description: Article language code (e.g., en_US)
-          default: en_US
+        VersionNumber:
+          type: integer
+        LastPublishedDate:
+          type: string
+          format: date-time
+        CreatedDate:
+          type: string
+          format: date-time
+    KnowledgeArticleListResponse:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+        done:
+          type: boolean
+        nextRecordsUrl:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeArticleSummary'
+    CreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        success:
+          type: boolean
+        errors:
+          type: array
+          items:
+            type: string
+    KnowledgeArticleSearchResponse:
+      type: object
+      properties:
+        currentPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeArticleSummary'
     PublishArticlesInput:
       type: object
       properties:
