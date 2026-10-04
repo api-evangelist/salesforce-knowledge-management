@@ -132,6 +132,9 @@ apis:
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
 common:
+  - type: CapabilityMap
+    url: capabilities/salesforce-knowledge-management-capability-edges.yml
+    name: Salesforce Knowledge Management Business Capability Map
   - type: Website
     url: https://www.salesforce.com/
   - type: PostmanWorkspace
