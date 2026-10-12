@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/salesforce-knowledge-management/integrations
+- https://n8n.io/integrations/salesforce-knowledge-management/
+- https://composio.dev/toolkits/salesforce-knowledge-management
+- https://monid.ai/tools/salesforce-knowledge-management
+checked:
+- https://composio.dev/toolkits/salesforce-knowledge-management
+- https://monid.ai/tools/salesforce-knowledge-management
+- https://n8n.io/integrations/salesforce-knowledge-management/
+- https://zapier.com/apps/salesforce-knowledge-management/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
