@@ -318,35 +318,19 @@ components:
                       type: string
                     label:
                       type: string
-    KnowledgeArticleSearchResponse:
+    KnowledgeArticleListResponse:
       type: object
       properties:
-        currentPageUrl:
+        totalSize:
+          type: integer
+        done:
+          type: boolean
+        nextRecordsUrl:
           type: string
-        nextPageUrl:
-          type: string
-        articles:
+        records:
           type: array
           items:
             $ref: '#/components/schemas/KnowledgeArticleSummary'
-    KnowledgeArticleInput:
-      type: object
-      required:
-      - Title
-      properties:
-        Title:
-          type: string
-          description: Article title
-        UrlName:
-          type: string
-          description: URL-friendly slug for the article
-        Summary:
-          type: string
-          description: Short summary of the article content
-        Language:
-          type: string
-          description: Article language code (e.g., en_US)
-          default: en_US
     KnowledgeArticle:
       type: object
       properties:
@@ -375,6 +359,37 @@ components:
         LastModifiedDate:
           type: string
           format: date-time
+    KnowledgeArticleSearchResponse:
+      type: object
+      properties:
+        currentPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeArticleSummary'
+    KnowledgeArticleUpdateInput:
+      type: object
+      properties:
+        Title:
+          type: string
+        Summary:
+          type: string
+        UrlName:
+          type: string
+    PublishArticlesInput:
+      type: object
+      properties:
+        inputs:
+          type: array
+          items:
+            type: object
+            properties:
+              knowledgeArticleVersionId:
+                type: string
+                description: ID of the article version to publish
     CreateResponse:
       type: object
       properties:
@@ -413,39 +428,6 @@ components:
         CreatedDate:
           type: string
           format: date-time
-    KnowledgeArticleUpdateInput:
-      type: object
-      properties:
-        Title:
-          type: string
-        Summary:
-          type: string
-        UrlName:
-          type: string
-    PublishArticlesInput:
-      type: object
-      properties:
-        inputs:
-          type: array
-          items:
-            type: object
-            properties:
-              knowledgeArticleVersionId:
-                type: string
-                description: ID of the article version to publish
-    KnowledgeArticleListResponse:
-      type: object
-      properties:
-        totalSize:
-          type: integer
-        done:
-          type: boolean
-        nextRecordsUrl:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/KnowledgeArticleSummary'
     PublishArticlesResponse:
       type: object
       properties:
@@ -455,6 +437,24 @@ components:
           type: array
           items:
             type: string
+    KnowledgeArticleInput:
+      type: object
+      required:
+      - Title
+      properties:
+        Title:
+          type: string
+          description: Article title
+        UrlName:
+          type: string
+          description: URL-friendly slug for the article
+        Summary:
+          type: string
+          description: Short summary of the article content
+        Language:
+          type: string
+          description: Article language code (e.g., en_US)
+          default: en_US
   securitySchemes:
     oauth2:
       type: oauth2

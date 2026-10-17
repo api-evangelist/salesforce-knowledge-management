@@ -66,6 +66,13 @@ paths:
                 $ref: '#/components/schemas/SuggestedArticlesResponse'
 components:
   schemas:
+    SuggestedArticlesResponse:
+      type: object
+      properties:
+        suggestedArticles:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeArticleSummary'
     KnowledgeArticleSummary:
       type: object
       properties:
@@ -93,13 +100,6 @@ components:
         CreatedDate:
           type: string
           format: date-time
-    SuggestedArticlesResponse:
-      type: object
-      properties:
-        suggestedArticles:
-          type: array
-          items:
-            $ref: '#/components/schemas/KnowledgeArticleSummary'
   securitySchemes:
     oauth2:
       type: oauth2
